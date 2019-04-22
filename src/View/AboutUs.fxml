@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.AboutUs"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="539.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AboutUs">
+   <children>
+      <Label fx:id="labelAboutUs" layoutX="63.0" layoutY="14.0" prefHeight="58.0" prefWidth="219.0" text="About us">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="27.0" />
+         </font>
+      </Label>
+      <Text fx:id="textAboutUs" layoutX="56.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="When natural disasters strike, the aftermath of the disaster leaves a lot of people in challenging circumstance and hey are suddenly found in a dire need of help. There are a lot of people willing to help others in times of natural catastrophes, but often times the organization to do so is lacking. For that reason we have decided to create a volunteering JavaFX application where admins upload information about how and where to volunteer to help at times of crisis. Users can then register on the application to help others in need. The purpose of our application is to gather people who are committed to helping others. With this application we have an organized platform that simplifies the gathering process. The times of crisis can be earthquakes, floodings, forest fires, etc. Users can firstly join the platform and fill out information about themselves. Once they have signed up, they can sign in and register for volunteering events, see their schedules, donate money or clothes. Admins of this application has the right to create an event, change/cancel schedule, delete users completely that aren’t fit for the organization. With the application, we wish to create a hospitable environment for volunteers. " wrappingWidth="501.0000022687018">
+         <font>
+            <Font name="Times New Roman Italic" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="mainButton" layoutX="56.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Go to Main" />
+   </children>
 </AnchorPane>
