@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DefaultPage">
    <children>
       <Button fx:id="signinButton" layoutX="303.0" layoutY="176.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="64.0" text="Sign in" />
       <Button fx:id="SignupButton" layoutX="303.0" layoutY="219.0" mnemonicParsing="false" onAction="#signUp" prefHeight="25.0" prefWidth="64.0" text="Sign up" />
