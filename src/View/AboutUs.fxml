@@ -6,7 +6,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="539.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AboutUs">
    <children>
       <Label fx:id="labelAboutUs" layoutX="63.0" layoutY="14.0" prefHeight="58.0" prefWidth="219.0" text="About us">
@@ -19,6 +18,9 @@
             <Font name="Times New Roman Italic" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="mainButton" layoutX="56.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Go to Main" />
+      <Button fx:id="mainButton" layoutX="56.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleMainButton" prefHeight="25.0" prefWidth="95.0" text="Go to Main">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>
