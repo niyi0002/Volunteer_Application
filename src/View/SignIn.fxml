@@ -17,6 +17,6 @@
                 <Font name="Times New Roman" size="54.0" />
             </font>
         </Text>
-        <Button fx:id="returnButton" layoutX="591.0" layoutY="397.0" mnemonicParsing="false" text="Return" />
+        <Button fx:id="returnButton" layoutX="591.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleReturnButton" text="Return" />
     </children>
 </AnchorPane>
