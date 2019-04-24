@@ -45,7 +45,7 @@ public class SignIn {
         String userName1 = userName.getText().toString();
         String password2 = password.getText().toString();
 
-        String sql = "SELECT * FROM adminInfo WHERE username = ? and password = ?";
+        String sql = "SELECT * FROM admin WHERE userName = ? and password = ?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
