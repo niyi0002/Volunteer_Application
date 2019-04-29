@@ -18,8 +18,8 @@ public class DatabaseConnection {
         }
     }
 
-    public void insert( String securityNbr , String userName,String firstName , String lastName , String password, String email, String birthday , String phoneNbr ,String address) {
-        String sql = "INSERT INTO information(securityNbr,userName,firstName,lastName,password,email,birthday,phoneNbr,address) VALUES(?,?,?,?,?,?,?,?,?)";
+    public void insert( String securityNbr , String userName,String firstName , String lastName , String password, String email, String birthday , String phoneNbr ,String address ,String role) {
+        String sql = "INSERT INTO volunteers(securityNbr,userName,firstName,lastName,password,email,birthday,phoneNbr,address,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         try (Connection conn = this.dbConnect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -33,6 +33,7 @@ public class DatabaseConnection {
             pstmt.setString(7,birthday);
             pstmt.setString(8,phoneNbr);
             pstmt.setString(9,address);
+            pstmt.setString(10,role);
             pstmt.executeUpdate();
             System.out.println("Volunteer saved into database!");
         } catch (SQLException e) {
