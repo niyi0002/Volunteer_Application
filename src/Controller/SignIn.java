@@ -19,6 +19,8 @@ import java.sql.ResultSet;
 
 public class SignIn {
 
+    private static String currentUser;
+
     @FXML
     private TextField userName;
     @FXML
@@ -62,6 +64,7 @@ public class SignIn {
 
             } else {
                 System.out.println("Succesful");
+                setCurrentUser(userName1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,6 +83,14 @@ public class SignIn {
             dialogStage.setScene(scene);
             dialogStage.show();
 
+        }
+
+        public static void setCurrentUser(String currentMethodUser){
+         currentUser = currentMethodUser;
+        }
+
+        public static String getCurrentUser(){
+         return currentUser;
         }
 
 
