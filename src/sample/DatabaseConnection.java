@@ -1,5 +1,7 @@
 package sample;
 
+import Model.Volunteer;
+
 import java.sql.*;
 
 public class DatabaseConnection {
@@ -40,5 +42,4 @@ public class DatabaseConnection {
             System.out.println(e.getMessage());
         }
     }
-
 }
