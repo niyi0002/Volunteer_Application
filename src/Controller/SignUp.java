@@ -61,7 +61,7 @@ public class SignUp {
     @FXML private void handleRegister(ActionEvent event){
         DatabaseConnection app = new DatabaseConnection();
         app.insert( ssnText.getText() , usernameText.getText(),firstNameText.getText(), lastNameText.getText(), passwordField.getText(), emailText.getText(),birthdayText.getText(),
-                phoneNbrText.getText(),addressText.getText());
+                phoneNbrText.getText(),addressText.getText(),"volunteer");
 
 
     }
