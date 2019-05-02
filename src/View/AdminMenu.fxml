@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.AdminMenu"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Button fx:id="volunteersButton" layoutX="246.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleViewVolunteers" prefHeight="26.0" prefWidth="112.0" text="View volunteers" />
+        <Button fx:id="addEventsButton" layoutX="249.0" layoutY="155.0" mnemonicParsing="false" onAction="#handleAddEvents" prefHeight="26.0" prefWidth="112.0" text="Add events" />
+        <Text layoutX="169.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin menu">
+            <font>
+                <Font name="Times New Roman" size="50.0" />
+            </font>
+        </Text>
+        <Button fx:id="returnButton" layoutX="510.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleReturnButton" prefHeight="26.0" prefWidth="59.0" text="Return" />
+        <Button fx:id="viewEventsButton" layoutX="249.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleViewEvents" prefHeight="26.0" prefWidth="112.0" text="View events" />
+    </children>
+
+</AnchorPane>
