@@ -1,11 +1,17 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Volunteer extends User{
 
 
     public String birthday;
     public String phoneNbr;
     public String address;
+
+    public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthDay) throws Exception {
+        super(firstName, lastName, phoneNumber, birthDay);
+    }
 
     public String getBirthday() {
         return birthday;
