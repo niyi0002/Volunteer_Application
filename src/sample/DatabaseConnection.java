@@ -42,4 +42,110 @@ public class DatabaseConnection {
             System.out.println(e.getMessage());
         }
     }
+
+    public String getSecurityNbr(String username) throws SQLException {
+        String SSN = null;
+
+        String query = "select securityNbr from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                SSN = resultSet.getString(1);
+            }
+        }
+        return SSN;
+    }
+    public String getUserName(String username) throws SQLException {
+        String userName = null;
+
+        String query = "select userName from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                userName = resultSet.getString(2);
+            }
+        }
+        return userName;
+    }
+    public String getFirstName(String username) throws SQLException {
+        String firstName = null;
+
+        String query = "select firstName from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                firstName = resultSet.getString(3);
+            }
+        }
+        return firstName;
+    }
+    public String getLastName(String username) throws SQLException {
+        String lastName = null;
+
+        String query = "select lastName from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                lastName = resultSet.getString(4);
+            }
+        }
+        return lastName;
+    }
+    public String getEmail(String username) throws SQLException {
+        String email = null;
+
+        String query = "select email from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                email = resultSet.getString(5);
+            }
+        }
+        return email;
+    }
+    public String getBirthday(String username) throws SQLException {
+        String birthday = null;
+
+        String query = "select birthday from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                birthday = resultSet.getString(6);
+            }
+        }
+        return birthday;
+    }
+    public String getPhoneNbr(String username) throws SQLException {
+        String phoneNbr = null;
+
+        String query = "select phoneNbr from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                phoneNbr = resultSet.getString(7);
+            }
+        }
+        return phoneNbr;
+    }
+    public String getAddress(String username) throws SQLException {
+        String address = null;
+
+        String query = "select address from information where username = '" +username+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                address = resultSet.getString(8);
+            }
+        }
+        return address;
+    }
+
 }
