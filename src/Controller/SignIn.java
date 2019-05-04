@@ -28,7 +28,7 @@ public class SignIn {
     @FXML
     private Button returnButton;
 
-
+    private static String currentUser;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -81,6 +81,14 @@ public class SignIn {
             dialogStage.show();
 
         }
+
+    public static String getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(String currentMethodUser) {
+        currentUser = currentMethodUser;
+    }
 
 
     }

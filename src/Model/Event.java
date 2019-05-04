@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 public class Event {
 
     private int eventID;
@@ -7,8 +9,10 @@ public class Event {
     private String eventDate;
     private String eventTime;
     private String eventInfo;
+    private String eventOrganizer;
     private String country;
     private String city;
+
 
     public Event(){
 
@@ -22,8 +26,8 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public void setEventDate(String eventDate){
-        this.eventDate = eventDate;
+    public void setEventDate(Date eventDate){
+        this.eventDate = String.valueOf(eventDate);
     }
 
     public void setEventTime(String eventTime){
@@ -41,6 +45,11 @@ public class Event {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public void setEventOrganizer(String eventOrganizer) {
+        this.eventOrganizer = eventOrganizer;
+    }
+
 
     public int getEventID() {
         return eventID;
@@ -65,6 +74,9 @@ public class Event {
     }
 
     public String getCity() { return city;
+    }
 
+    public String getEventOrganizer() {
+        return eventOrganizer;
     }
 }
