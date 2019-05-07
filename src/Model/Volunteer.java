@@ -12,6 +12,7 @@ public class Volunteer extends User{
     public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthDay) throws Exception {
         super(firstName, lastName, phoneNumber, birthDay);
     }
+    public  Volunteer(){super();}
 
     public String getBirthday() {
         return birthday;

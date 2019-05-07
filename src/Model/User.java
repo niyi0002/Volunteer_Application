@@ -28,6 +28,8 @@ public class User {
         setImageFile(new File("./src/images/Person.jpeg"));
     }
 
+    public User(){}
+
     public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay, File imageFile) throws Exception {
 
 
