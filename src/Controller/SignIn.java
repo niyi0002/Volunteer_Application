@@ -45,7 +45,7 @@ public class SignIn {
         String userName1 = userName.getText().toString();
         String password2 = password.getText().toString();
 
-        String sql = "SELECT * FROM admin WHERE userName = ? and password = ?";
+        String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -62,6 +62,16 @@ public class SignIn {
 
             } else {
                 System.out.println("Succesful");
+                Node node = (Node) event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                try {
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserMenu.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dialogStage.setScene(scene);
+                dialogStage.show();
             }
         } catch (Exception e) {
             e.printStackTrace();
