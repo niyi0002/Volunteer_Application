@@ -2,6 +2,9 @@ package Model;
 
 
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,100 +18,115 @@ import java.time.Period;
 
 public abstract class User {
 
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private LocalDate birthDay;
+
     private File imageFile;
-    private String userName;
-    private String password;
+    private StringProperty id = new SimpleStringProperty(this, "idinformation");
+    private StringProperty firstName = new SimpleStringProperty(this, "firstname");
+    private StringProperty lastName = new SimpleStringProperty(this, "lastname");
+    private StringProperty email = new SimpleStringProperty(this, "email");
+    private StringProperty userName = new SimpleStringProperty(this, "username");
+    private StringProperty password = new SimpleStringProperty(this,"password");
+    private StringProperty address = new SimpleStringProperty(this, "address");
+    private StringProperty phoneNbr = new SimpleStringProperty(this,"phoneNbr");
+    private StringProperty role = new SimpleStringProperty(this,"role");
 
-    public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay) throws Exception {
-        setFirstName(firstName);
-        setLastName(lastName);
-        setPhoneNumber(phoneNumber);
-        setBirthDay(birthDay);
-        setImageFile(new File("./src/images/Person.jpeg"));
-    }
-
-    public User(){}
-
-    public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay, File imageFile, String userName, String password) throws Exception {
-
-
-        this(firstName, lastName, phoneNumber, birthDay);
-
-
-        setImageFile(imageFile);
-        copyImageFile();
-    }
-
-    public String getFirstName() {
-
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-
-        this.lastName = lastName;
-    }
-
-    public String getPhoneNumber() {
-
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-
-        if (phoneNumber.matches("[2-9]\\d{2}[-.]?\\d{3}[-.]\\d{6}"))
-            this.phoneNumber = phoneNumber;
-
-        else
-            throw new IllegalArgumentException("Phone Numbers must be in the pattern NXX-XXX-XXXXXX");
+    public User(StringProperty idinformation ,StringProperty firstname ,StringProperty lastname , StringProperty email
+            , StringProperty password , StringProperty username, StringProperty address , StringProperty phoneNbr ,StringProperty role){
+        this.id = idinformation;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.email = email;
+        this.userName = username;
+        this.password = password ;
+        this.address = address ;
+        this.phoneNbr = phoneNbr ;
+        this.role = role ;
 
     }
 
-    public LocalDate getBirthDay() {
 
-        return birthDay;
+    public User() {
+
     }
 
-    public void setBirthDay(LocalDate birthDay) throws Exception {
-
-        int age = Period.between(birthDay, LocalDate.now()).getYears();
-
-        if (age >= 18 && age <= 70) {
-            this.birthDay = birthDay;
-        } else {
-            throw new Exception("AGE NOT ALLOWED");
-        }
+    public void setIdinformation(String idinformation) {
+        this.id.set(idinformation);
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFirstname(String firstname) {
+        this.firstName.set(firstname);
     }
 
-    public String getUserName() {
-        return userName;
+    public void setLastname(String lastname) {
+        this.lastName.set(lastname);
     }
 
-    public void setPassword(String password){
-        this.password = password;
+    public void setEmail(String email) {
+        this.email.set(email);
     }
 
-    public String getPassword(){
-        return password;
+    public void setUsername(String username) {
+        this.userName.set(username);
     }
+
+    public void setPassword(String password) {
+        this.password.set(password);
+    }
+
+    public void setAddress(String address) {
+        this.address.set(address);
+    }
+
+    public void setPhoneNbr(String phoneNbr) {
+        this.phoneNbr.set(phoneNbr);
+    }
+
+    public void setRole(String role) {
+        this.role.set(role);
+    }
+
+    public String getIdinformation() {
+        return id.get();
+    }
+
+    public String getFirstname() {
+        return firstName.get();
+    }
+
+    public String getLastname() {
+        return lastName.get();
+    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public String getUsername() {
+        return userName.get();
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public String getAddress() {
+        return address.get();
+    }
+
+    public String getPhoneNbr() {
+        return phoneNbr.get();
+    }
+
+    public String getRole() {
+        return role.get();
+    }
+
+
+
+
+
+
+
 
     public File getImageFile() {
 
@@ -119,7 +137,41 @@ public abstract class User {
         this.imageFile = imageFile;
 
     }
+    public StringProperty idinformationProperty() {
+        return id;
+    }
 
+    public StringProperty firstnameProperty() {
+        return firstName;
+    }
+
+    public StringProperty lastnameProperty() {
+        return lastName;
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    public StringProperty usernameProperty() {
+        return userName;
+    }
+
+    public StringProperty passwordProperty() {
+        return password;
+    }
+
+    public StringProperty addressProperty() {
+        return address;
+    }
+
+    public StringProperty phoneNbrProperty() {
+        return phoneNbr;
+    }
+
+    public StringProperty roleProperty() {
+        return role;
+    }
 
     public void copyImageFile() throws IOException {
 
@@ -190,11 +242,6 @@ public abstract class User {
     }
 
 
-    public String toString() {
-
-        return String.format("%s %s is %d years old ", firstName, lastName, Period.between(birthDay, LocalDate.now()).getYears());
-
-    }
 
 
     public boolean uniqueFileInDirectory(String fileName) {
