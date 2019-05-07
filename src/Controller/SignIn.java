@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,10 @@ public class SignIn {
         String userName1 = userName.getText().toString();
         String password2 = password.getText().toString();
 
+        Volunteer volunteer = new Volunteer();
+        volunteer.setUserName(userName1);
+        volunteer.setPassword(password2);
+
         String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ?";
 
         try {
@@ -62,6 +67,7 @@ public class SignIn {
 
             } else {
                 System.out.println("Succesful");
+                setCurrentUser(userName1);
                 Node node = (Node) event.getSource();
                 dialogStage = (Stage) node.getScene().getWindow();
                 dialogStage.close();

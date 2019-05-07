@@ -12,13 +12,15 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class User {
+public abstract class User {
 
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private LocalDate birthDay;
     private File imageFile;
+    private String userName;
+    private String password;
 
     public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay) throws Exception {
         setFirstName(firstName);
@@ -30,7 +32,7 @@ public class User {
 
     public User(){}
 
-    public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay, File imageFile) throws Exception {
+    public User(String firstName, String lastName, String phoneNumber, LocalDate birthDay, File imageFile, String userName, String password) throws Exception {
 
 
         this(firstName, lastName, phoneNumber, birthDay);
@@ -89,6 +91,22 @@ public class User {
         } else {
             throw new Exception("AGE NOT ALLOWED");
         }
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     public File getImageFile() {
