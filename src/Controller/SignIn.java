@@ -47,7 +47,7 @@ public class SignIn {
         String password2 = password.getText().toString();
 
         Volunteer volunteer = new Volunteer();
-        volunteer.setUserName(userName1);
+        volunteer.setUsername(userName1);
         volunteer.setPassword(password2);
 
         String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ?";
