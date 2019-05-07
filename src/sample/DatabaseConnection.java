@@ -46,7 +46,7 @@ public class DatabaseConnection {
     public String getSecurityNbr(String username) throws SQLException {
         String SSN = null;
 
-        String query = "select securityNbr from information where username = '" +username+"'";
+        String query = "select securityNbr from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -59,7 +59,7 @@ public class DatabaseConnection {
     public String getUserName(String username) throws SQLException {
         String userName = null;
 
-        String query = "select userName from information where username = '" +username+"'";
+        String query = "select userName from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -72,7 +72,7 @@ public class DatabaseConnection {
     public String getFirstName(String username) throws SQLException {
         String firstName = null;
 
-        String query = "select firstName from information where username = '" +username+"'";
+        String query = "select firstName from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -85,7 +85,7 @@ public class DatabaseConnection {
     public String getLastName(String username) throws SQLException {
         String lastName = null;
 
-        String query = "select lastName from information where username = '" +username+"'";
+        String query = "select lastName from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -98,7 +98,7 @@ public class DatabaseConnection {
     public String getEmail(String username) throws SQLException {
         String email = null;
 
-        String query = "select email from information where username = '" +username+"'";
+        String query = "select email from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -111,7 +111,7 @@ public class DatabaseConnection {
     public String getBirthday(String username) throws SQLException {
         String birthday = null;
 
-        String query = "select birthday from information where username = '" +username+"'";
+        String query = "select birthday from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -124,7 +124,7 @@ public class DatabaseConnection {
     public String getPhoneNbr(String username) throws SQLException {
         String phoneNbr = null;
 
-        String query = "select phoneNbr from information where username = '" +username+"'";
+        String query = "select phoneNbr from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
@@ -137,7 +137,7 @@ public class DatabaseConnection {
     public String getAddress(String username) throws SQLException {
         String address = null;
 
-        String query = "select address from information where username = '" +username+"'";
+        String query = "select address from volunteers where username = '" +username+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
