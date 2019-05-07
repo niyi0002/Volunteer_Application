@@ -65,7 +65,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                userName = resultSet.getString(2);
+                userName = resultSet.getString(1);
             }
         }
         return userName;
@@ -78,7 +78,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                firstName = resultSet.getString(3);
+                firstName = resultSet.getString(1);
             }
         }
         return firstName;
@@ -91,7 +91,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                lastName = resultSet.getString(4);
+                lastName = resultSet.getString(1);
             }
         }
         return lastName;
@@ -104,7 +104,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                email = resultSet.getString(5);
+                email = resultSet.getString(1);
             }
         }
         return email;
@@ -117,7 +117,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                birthday = resultSet.getString(6);
+                birthday = resultSet.getString(1);
             }
         }
         return birthday;
@@ -130,7 +130,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                phoneNbr = resultSet.getString(7);
+                phoneNbr = resultSet.getString(1);
             }
         }
         return phoneNbr;
@@ -143,7 +143,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
-                address = resultSet.getString(8);
+                address = resultSet.getString(1);
             }
         }
         return address;
