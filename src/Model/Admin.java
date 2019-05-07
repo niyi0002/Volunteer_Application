@@ -1,9 +1,9 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Admin extends User{
 
-    //add cunstructor
+    public Admin (){super();}
 
-    public Admin() {
-    }
 }

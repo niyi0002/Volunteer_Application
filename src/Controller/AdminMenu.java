@@ -31,7 +31,7 @@ public class AdminMenu {
             Node node = (Node) event.getSource();
             dialogStage = (Stage) node.getScene().getWindow();
             dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Events.fxml")));
+            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/AddEvent.fxml")));
             dialogStage.setScene(scene);
             dialogStage.show();
         } catch (Exception e) {

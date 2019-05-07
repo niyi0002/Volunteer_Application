@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +20,6 @@ import java.sql.ResultSet;
 
 public class SignIn {
 
-    private static String currentUser;
-
     @FXML
     private TextField userName;
     @FXML
@@ -30,7 +29,7 @@ public class SignIn {
     @FXML
     private Button returnButton;
 
-
+    private static String currentUser;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
@@ -47,7 +46,11 @@ public class SignIn {
         String userName1 = userName.getText().toString();
         String password2 = password.getText().toString();
 
-        String sql = "SELECT * FROM admin WHERE userName = ? and password = ?";
+        Volunteer volunteer = new Volunteer();
+        volunteer.setUserName(userName1);
+        volunteer.setPassword(password2);
+
+        String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -65,6 +68,16 @@ public class SignIn {
             } else {
                 System.out.println("Succesful");
                 setCurrentUser(userName1);
+                Node node = (Node) event.getSource();
+                dialogStage = (Stage) node.getScene().getWindow();
+                dialogStage.close();
+                try {
+                    scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserMenu.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                dialogStage.setScene(scene);
+                dialogStage.show();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,13 +98,13 @@ public class SignIn {
 
         }
 
-        public static void setCurrentUser(String currentMethodUser){
-         currentUser = currentMethodUser;
-        }
+    public static String getCurrentUser() {
+        return currentUser;
+    }
 
-        public static String getCurrentUser(){
-         return currentUser;
-        }
+    public static void setCurrentUser(String currentMethodUser) {
+        currentUser = currentMethodUser;
+    }
 
 
     }

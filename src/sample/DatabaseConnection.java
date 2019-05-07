@@ -1,5 +1,6 @@
 package sample;
 
+import Model.Event;
 import Model.Volunteer;
 
 import java.sql.*;
@@ -147,5 +148,25 @@ public class DatabaseConnection {
         }
         return address;
     }
+    public void insertEvent( Event event) {
+        String sql = ""+"INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?,?)";
 
+
+        try (Connection conn = this.dbConnect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, event.getEventID());
+            pstmt.setString(2, event.getEventName());
+            pstmt.setString(3,event.getEventDate());
+            pstmt.setString(4, event.getEventTime());
+            pstmt.setString(5,event.getEventInfo());
+            pstmt.setString(6,event.getEventOrganizer());
+            pstmt.setString(7,event.getCountry());
+            pstmt.setString(8,event.getCity());
+            pstmt.executeUpdate();
+            System.out.println("Event saved into database!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
