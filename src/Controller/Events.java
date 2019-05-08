@@ -69,7 +69,7 @@ public class Events implements Initializable {
         ResultSet resultSet = null;// create a result set
 
         try {
-            con = DriverManager.getConnection("jdbc:mysql//localhost::3306/Volunteers", "student", "12345678Bam!");
+            con = DriverManager.getConnection("jdbc:mysql//localhost::3306/Volunteers", "Local", "Local");
 
             statement = con.createStatement();
 

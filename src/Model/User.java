@@ -19,6 +19,7 @@ import java.time.Period;
 public abstract class User {
 
     private File imageFile;
+    private StringProperty userID =  new SimpleStringProperty(this, "userID");
     private StringProperty securityNbr = new SimpleStringProperty(this, "securityNbr");
     private StringProperty firstname = new SimpleStringProperty(this, "firstname");
     private StringProperty lastname = new SimpleStringProperty(this, "lastname");
@@ -29,7 +30,8 @@ public abstract class User {
     private StringProperty role = new SimpleStringProperty(this, "role");
 
     public User(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email
-            , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty role) {
+            , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty userID, StringProperty role) {
+        this.userID = userID;
         this.securityNbr = securityNbr;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -45,6 +47,15 @@ public abstract class User {
 
     }
 
+    public String getUserID() {
+        return userID.get(); }
+
+    public StringProperty userIDProperty() {
+        return userID; }
+
+    public void setUserID(String userID) {
+        this.userID.set(userID);
+    }
 
     public void setSecurityNbr(String securityNbr) {
         this.securityNbr.set(securityNbr);
