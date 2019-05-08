@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.DatabaseConnection;
+
+import java.sql.Date;
 
 public class SignUp {
     @FXML
@@ -59,10 +62,23 @@ public class SignUp {
     Scene scene;
 
     @FXML private void handleRegister(ActionEvent event){
-        DatabaseConnection app = new DatabaseConnection();
-        app.insert( ssnText.getText() , usernameText.getText(),firstNameText.getText(), lastNameText.getText(), passwordField.getText(), emailText.getText(),birthdayText.getText(),
-                phoneNbrText.getText(),addressText.getText(),"volunteer");
-
+        DatabaseConnection db = new DatabaseConnection();
+     //   java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(birthday.getValue());
+        // insert three new rows
+        /*
+        Volunteer volunteer = new Volunteer();
+        volunteer.setSecurityNbr(ssnText.getText());
+        volunteer.setUsername(usernameText.getText());
+        volunteer.setPassword(passwordField.getText());
+        volunteer.setFirstname(firstNameText.getText());
+        volunteer.setLastname(lastNameText.getText());
+        volunteer.setEmail(emailText.getText());
+        volunteer.setAddress(addressText.getText());
+        volunteer.setPhoneNbr(phoneNbrText.getText());
+        volunteer.setBirthday(Date.valueOf(birthdayText.getText()));
+        volunteer.setRole("volunteer");
+        db.insert(volunteer);
+*/
 
     }
 

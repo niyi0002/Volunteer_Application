@@ -1,5 +1,6 @@
 package sample;
 
+import Model.Donation;
 import Model.Event;
 import Model.Volunteer;
 
@@ -21,22 +22,23 @@ public class DatabaseConnection {
         }
     }
 
-    public void insert( String securityNbr , String userName,String firstName , String lastName , String password, String email, String birthday , String phoneNbr ,String address ,String role) {
-        String sql = "INSERT INTO volunteers(securityNbr,userName,firstName,lastName,password,email,birthday,phoneNbr,address,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
+    public void insert(Volunteer volunteer) {
+        String sql = ""+"INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
+
 
         try (Connection conn = this.dbConnect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, securityNbr);
-            pstmt.setString(2, userName);
-            pstmt.setString(3,firstName);
-            pstmt.setString(4, lastName);
-            pstmt.setString(5,password);
-            pstmt.setString(6,email);
-            pstmt.setString(7,birthday);
-            pstmt.setString(8,phoneNbr);
-            pstmt.setString(9,address);
-            pstmt.setString(10,role);
+            pstmt.setString(1, volunteer.getSecurtyNbr());
+            pstmt.setString(2, volunteer.getUsername());
+            pstmt.setString(3, volunteer.getPassword());
+            pstmt.setString(4, volunteer.getFirstname());
+            pstmt.setString(5, volunteer.getLastname());
+            pstmt.setString(6, volunteer.getEmail());
+            pstmt.setString(7, volunteer.getAddress());
+            pstmt.setString(8, volunteer.getPhoneNbr());
+            pstmt.setString(9, volunteer.getBirthday());
+            pstmt.setString(10, volunteer.getRole());
             pstmt.executeUpdate();
             System.out.println("Volunteer saved into database!");
         } catch (SQLException e) {
@@ -165,6 +167,23 @@ public class DatabaseConnection {
             pstmt.setString(8,event.getCity());
             pstmt.executeUpdate();
             System.out.println("Event saved into database!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void insertDonation( Donation donation , Volunteer volunteer)  {
+
+        String query = ""+"INSERT INTO donation(donationAmount,donationHistory,securityNbr) VALUES(?,?,?) ";
+
+        try (Connection conn = this.dbConnect();
+             PreparedStatement preparedStmt = conn.prepareStatement(query)) {
+
+            preparedStmt.setString   (1, donation.getDonation());
+            preparedStmt.setString   (2, donation.getDonationDate());
+            preparedStmt.setString   (3, volunteer.getSecurtyNbr());
+
+            preparedStmt.executeUpdate();
+            System.out.println("Inserted donation!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
