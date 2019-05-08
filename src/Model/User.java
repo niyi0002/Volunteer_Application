@@ -18,47 +18,44 @@ import java.time.Period;
 
 public abstract class User {
 
-
     private File imageFile;
-    private StringProperty id = new SimpleStringProperty(this, "idinformation");
-    private StringProperty firstName = new SimpleStringProperty(this, "firstname");
-    private StringProperty lastName = new SimpleStringProperty(this, "lastname");
+    private StringProperty securityNbr = new SimpleStringProperty(this, "securityNbr");
+    private StringProperty firstname = new SimpleStringProperty(this, "firstname");
+    private StringProperty lastname = new SimpleStringProperty(this, "lastname");
     private StringProperty email = new SimpleStringProperty(this, "email");
-    private StringProperty userName = new SimpleStringProperty(this, "username");
-    private StringProperty password = new SimpleStringProperty(this,"password");
-    private StringProperty address = new SimpleStringProperty(this, "address");
-    private StringProperty phoneNbr = new SimpleStringProperty(this,"phoneNbr");
-    private StringProperty role = new SimpleStringProperty(this,"role");
+    private StringProperty username = new SimpleStringProperty(this, "username");
+    private StringProperty password = new SimpleStringProperty(this, "password");
+    private StringProperty phoneNbr = new SimpleStringProperty(this, "phoneNbr");
+    private StringProperty role = new SimpleStringProperty(this, "role");
 
-    public User(StringProperty idinformation ,StringProperty firstname ,StringProperty lastname , StringProperty email
-            , StringProperty password , StringProperty username, StringProperty address , StringProperty phoneNbr ,StringProperty role){
-        this.id = idinformation;
-        this.firstName = firstname;
-        this.lastName = lastname;
+    public User(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email
+            , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty role) {
+        this.securityNbr = securityNbr;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
-        this.userName = username;
-        this.password = password ;
-        this.address = address ;
-        this.phoneNbr = phoneNbr ;
-        this.role = role ;
+        this.username = username;
+        this.password = password;
+        this.phoneNbr = phoneNbr;
+        this.role = role;
 
     }
-
 
     public User() {
 
     }
 
-    public void setIdinformation(String idinformation) {
-        this.id.set(idinformation);
+
+    public void setSecurityNbr(String securityNbr) {
+        this.securityNbr.set(securityNbr);
     }
 
     public void setFirstname(String firstname) {
-        this.firstName.set(firstname);
+        this.firstname.set(firstname);
     }
 
     public void setLastname(String lastname) {
-        this.lastName.set(lastname);
+        this.lastname.set(lastname);
     }
 
     public void setEmail(String email) {
@@ -66,16 +63,13 @@ public abstract class User {
     }
 
     public void setUsername(String username) {
-        this.userName.set(username);
+        this.username.set(username);
     }
 
     public void setPassword(String password) {
         this.password.set(password);
     }
 
-    public void setAddress(String address) {
-        this.address.set(address);
-    }
 
     public void setPhoneNbr(String phoneNbr) {
         this.phoneNbr.set(phoneNbr);
@@ -85,16 +79,16 @@ public abstract class User {
         this.role.set(role);
     }
 
-    public String getIdinformation() {
-        return id.get();
+    public String getSecurtyNbr() {
+        return securityNbr.get();
     }
 
     public String getFirstname() {
-        return firstName.get();
+        return firstname.get();
     }
 
     public String getLastname() {
-        return lastName.get();
+        return lastname.get();
     }
 
     public String getEmail() {
@@ -102,16 +96,13 @@ public abstract class User {
     }
 
     public String getUsername() {
-        return userName.get();
+        return username.get();
     }
 
     public String getPassword() {
         return password.get();
     }
 
-    public String getAddress() {
-        return address.get();
-    }
 
     public String getPhoneNbr() {
         return phoneNbr.get();
@@ -120,12 +111,6 @@ public abstract class User {
     public String getRole() {
         return role.get();
     }
-
-
-
-
-
-
 
 
     public File getImageFile() {
@@ -137,16 +122,17 @@ public abstract class User {
         this.imageFile = imageFile;
 
     }
-    public StringProperty idinformationProperty() {
-        return id;
+
+    public StringProperty securityNbrProperty() {
+        return securityNbr;
     }
 
     public StringProperty firstnameProperty() {
-        return firstName;
+        return firstname;
     }
 
     public StringProperty lastnameProperty() {
-        return lastName;
+        return lastname;
     }
 
     public StringProperty emailProperty() {
@@ -154,16 +140,13 @@ public abstract class User {
     }
 
     public StringProperty usernameProperty() {
-        return userName;
+        return username;
     }
 
     public StringProperty passwordProperty() {
         return password;
     }
 
-    public StringProperty addressProperty() {
-        return address;
-    }
 
     public StringProperty phoneNbrProperty() {
         return phoneNbr;
@@ -242,8 +225,6 @@ public abstract class User {
     }
 
 
-
-
     public boolean uniqueFileInDirectory(String fileName) {
         File directory = new File("./src/images/");
         File[] dir_contents = directory.listFiles();
@@ -256,4 +237,3 @@ public abstract class User {
     }
 
 }
-

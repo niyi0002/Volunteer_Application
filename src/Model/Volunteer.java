@@ -1,34 +1,40 @@
 package Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Volunteer extends User {
-    public String birthday;
-    public String phoneNbr;
-    public String address;
-    public Volunteer(String firstName, String lastName, String phoneNumber, LocalDate birthDay) throws Exception {
-            super(firstName, lastName, phoneNumber, birthDay);
-        }
-    public Volunteer() {
-            super();
-        }
+    private StringProperty birthday = new SimpleStringProperty(this, "birthday");
+    private StringProperty address = new SimpleStringProperty(this, "address");
+    public Volunteer( StringProperty birthday, StringProperty address){
 
-        public String getBirthday () {
-            return birthday;
-        }
+        this.birthday = birthday ;
+        this.address = address ;
+    }
+    public Volunteer(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email, StringProperty password, StringProperty username , StringProperty birthday , StringProperty role) {
 
-        public void setBirthday (String birthday){
-            this.birthday = birthday;
-        }
-
-        public String getPhoneNbr () {
-            return phoneNbr;
-        }
-
-        public void setPhoneNbr (String phoneNbr){
-            this.phoneNbr = phoneNbr;
-
-        }
-
+    }
+    public Volunteer (){super();}
+    public void setAddress(String address) {
+        this.address.set(address);
+    }
+    public String getAddress() {
+        return address.get();
+    }
+    public String getBirthday() {
+        return birthday.get();
+    }
+    public void setBirthday(Date birthday) {
+        this.birthday.set(String.valueOf(birthday));
+    }
+    public StringProperty birthdayProperty() {
+        return birthday;
+    }
+    public StringProperty addressProperty() {
+        return address;
+    }
 
 }
