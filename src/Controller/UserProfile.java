@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class UserProfile {
 
-    DatabaseConnection app =new DatabaseConnection();
+    DatabaseConnection app = new DatabaseConnection();
 
     @FXML
     private Label username;
