@@ -1,56 +1,40 @@
 package Model;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.sql.Date;
 import java.time.LocalDate;
 
-public class Volunteer extends User{
+public class Volunteer extends User {
+    private StringProperty birthday = new SimpleStringProperty(this, "birthday");
+    private StringProperty address = new SimpleStringProperty(this, "address");
+    public Volunteer( StringProperty birthday, StringProperty address){
 
-
-    public String birthday;
-    public String phoneNbr;
-    public String address;
-    public int volunteerID;
-
-
-    public Volunteer(String firstName, String lastName, String phoneNumber, int volunteerID, LocalDate birthDay) throws Exception {
-        super(firstName, lastName, phoneNumber, birthDay);
+        this.birthday = birthday ;
+        this.address = address ;
     }
-
-    public int getVolunteerID() {
-        return volunteerID;
-    }
-
-    public void setVolunteerID(int volunteerID) {
-        if (volunteerID >= 0)  // make sure it is positive number
-            this.volunteerID = volunteerID;
-        else
-            throw new IllegalArgumentException("Volunteers Must be Greater than 0");
+    public Volunteer(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email, StringProperty password, StringProperty username , StringProperty birthday , StringProperty role) {
 
     }
-
-        public String getBirthday() {
+    public Volunteer (){super();}
+    public void setAddress(String address) {
+        this.address.set(address);
+    }
+    public String getAddress() {
+        return address.get();
+    }
+    public String getBirthday() {
+        return birthday.get();
+    }
+    public void setBirthday(Date birthday) {
+        this.birthday.set(String.valueOf(birthday));
+    }
+    public StringProperty birthdayProperty() {
         return birthday;
     }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getPhoneNbr() {
-        return phoneNbr;
-    }
-
-    public void setPhoneNbr(String phoneNbr) {
-        this.phoneNbr = phoneNbr;
-    }
-
-    public String getAddress() {
+    public StringProperty addressProperty() {
         return address;
     }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
 
 }
