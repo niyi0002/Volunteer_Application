@@ -33,7 +33,7 @@ public class DefaultPage {
         dialogStage = (Stage) node.getScene().getWindow();
         dialogStage.close();
         try {
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/SignIn.fxml")));
+            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/AdminOrVolunteer.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
