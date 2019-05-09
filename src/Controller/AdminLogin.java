@@ -59,7 +59,7 @@ public class AdminLogin {
         admin.setPassword(password1);
         String roles = "admin";
 
-        String sql = "SELECT * FROM information WHERE username = ? and password = ? and role = ? ";
+        String sql = "SELECT * FROM volunteers WHERE username = ? and password = ? and role = ? ";
 
         try {
             preparedStatement = (PreparedStatement) connection.prepareStatement(sql);
