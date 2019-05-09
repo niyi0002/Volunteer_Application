@@ -7,6 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sample.ChangeScene;
+
+import java.io.IOException;
 
 public class UserMenu {
     @FXML
@@ -24,73 +27,34 @@ public class UserMenu {
     @FXML
     private Button signOut;
 
-    Stage dialogStage = new Stage();
-    Scene scene;
+    ChangeScene cs = new ChangeScene();
 
     @FXML
-    void handleDonate(ActionEvent event) {
-        try {
-
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Donate.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleDonate(ActionEvent event) throws IOException {
+      cs.sceneHandler("../View/Donate.fxml",event);
     }
 
     @FXML
-    void handleEvents(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Events.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleEvents(ActionEvent event) throws IOException{
+        cs.sceneHandler("../View/Events.fxml",event);
     }
 
     @FXML
-    void handleSchedule(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Schedule.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleSchedule(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/Schedule.fxml",event);
     }
 
     @FXML
-    void handleUserProfile(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserProfile.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleUserProfile(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/UserProfile.fxml",event);
+    }
+    @FXML
+    void handleViewHistory(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/ViewHistory.fxml",event);
     }
 
     @FXML
-    void handleSignOut(ActionEvent event) {
-
+    void handleSignOut(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/DefaultPage.fxml",event);
     }
 }
