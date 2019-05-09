@@ -2,9 +2,13 @@ package sample;
 
 import Model.Donation;
 import Model.Event;
+import Model.User_Has_Events;
 import Model.Volunteer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class DatabaseConnection {
     private Connection con;
@@ -278,7 +282,55 @@ public class DatabaseConnection {
         }
         // execute the java preparedstatement
 
+    }
 
+
+    public ObservableList<User_Has_Events> historyInfo(String userID){
+
+        LocalDate date = LocalDate.now();
+        ObservableList<User_Has_Events>eventHistory= FXCollections.observableArrayList();
+        String query = "select eventID , history from volunteer_has_events where securityNbr = '" +userID+"' and history < '"+date+"'" ;
+
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                User_Has_Events history = new User_Has_Events();
+                history.setEventID(resultSet.getInt(1));
+                history.setHistory(resultSet.getDate(2));
+
+                eventHistory.add(history);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventHistory;
+    }
+    public ObservableList<Donation> donationInfo(String userID){
+
+        LocalDate date = LocalDate.now();
+        ObservableList<Donation>donationHistory= FXCollections.observableArrayList();
+        String query = "select donationAmount , donationHistory from donation where securityNbr = '" +userID+"'";
+
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Donation donation = new Donation();
+                donation.setDonation(resultSet.getString(1));
+                donation.setDonationDate(resultSet.getDate(2));
+
+
+                donationHistory.add(donation);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return donationHistory;
     }
 
 }
