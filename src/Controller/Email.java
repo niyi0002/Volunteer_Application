@@ -38,8 +38,6 @@ public class Email {
     private static String ourEmailsPassword = "volunteerapp"; // GMail password (Maybe make one just for this project team)
     private static String emailTitle = "Volunteer Application"; // Add the title of the e-mail here.
 
-
-
     @FXML
     void sendMessage(ActionEvent event) {
         String reci=txtTo.getText().toString();
