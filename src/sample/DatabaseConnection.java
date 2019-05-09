@@ -151,20 +151,20 @@ public class DatabaseConnection {
         return address;
     }
     public void insertEvent( Event event) {
-        String sql = ""+"INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = ""+"INSERT INTO events(eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1, event.getEventID());
-            pstmt.setString(2, event.getEventName());
-            pstmt.setString(3,event.getEventDate());
-            pstmt.setString(4, event.getEventTime());
-            pstmt.setString(5,event.getEventInfo());
-            pstmt.setString(6,event.getEventOrganizer());
-            pstmt.setString(7,event.getCountry());
-            pstmt.setString(8,event.getCity());
+
+            pstmt.setString(1, event.getEventName());
+            pstmt.setString(2,event.getEventDate());
+            pstmt.setString(3, event.getEventTime());
+            pstmt.setString(4,event.getEventInfo());
+            pstmt.setString(5,event.getEventOrganizer());
+            pstmt.setString(6,event.getCountry());
+            pstmt.setString(7,event.getCity());
             pstmt.executeUpdate();
             System.out.println("Event saved into database!");
         } catch (SQLException e) {
