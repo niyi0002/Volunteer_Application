@@ -23,7 +23,7 @@ public class DatabaseConnection {
     }
 
     public void insert(Volunteer volunteer) {
-        String sql = ""+"INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
@@ -49,109 +49,117 @@ public class DatabaseConnection {
     public String getSecurityNbr(String username) throws SQLException {
         String SSN = null;
 
-        String query = "select securityNbr from volunteers where username = '" +username+"'";
+        String query = "select securityNbr from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 SSN = resultSet.getString(1);
             }
         }
         return SSN;
     }
+
     public String getUserName(String username) throws SQLException {
         String userName = null;
 
-        String query = "select userName from volunteers where username = '" +username+"'";
+        String query = "select userName from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 userName = resultSet.getString(1);
             }
         }
         return userName;
     }
+
     public String getFirstName(String username) throws SQLException {
         String firstName = null;
 
-        String query = "select firstName from volunteers where username = '" +username+"'";
+        String query = "select firstName from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 firstName = resultSet.getString(1);
             }
         }
         return firstName;
     }
+
     public String getLastName(String username) throws SQLException {
         String lastName = null;
 
-        String query = "select lastName from volunteers where username = '" +username+"'";
+        String query = "select lastName from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 lastName = resultSet.getString(1);
             }
         }
         return lastName;
     }
+
     public String getEmail(String username) throws SQLException {
         String email = null;
 
-        String query = "select email from volunteers where username = '" +username+"'";
+        String query = "select email from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 email = resultSet.getString(1);
             }
         }
         return email;
     }
+
     public String getBirthday(String username) throws SQLException {
         String birthday = null;
 
-        String query = "select birthday from volunteers where username = '" +username+"'";
+        String query = "select birthday from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 birthday = resultSet.getString(1);
             }
         }
         return birthday;
     }
+
     public String getPhoneNbr(String username) throws SQLException {
         String phoneNbr = null;
 
-        String query = "select phoneNbr from volunteers where username = '" +username+"'";
+        String query = "select phoneNbr from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 phoneNbr = resultSet.getString(1);
             }
         }
         return phoneNbr;
     }
+
     public String getAddress(String username) throws SQLException {
         String address = null;
 
-        String query = "select address from volunteers where username = '" +username+"'";
+        String query = "select address from volunteers where username = '" + username + "'";
         try (Connection connection = this.dbConnect();
-             Statement statement = connection.createStatement()){
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 address = resultSet.getString(1);
             }
         }
         return address;
     }
-    public void insertEvent( Event event) {
-        String sql = ""+"INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?,?)";
+
+    public void insertEvent(Event event) {
+        String sql = "" + "INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
@@ -159,28 +167,29 @@ public class DatabaseConnection {
 
             pstmt.setInt(1, event.getEventID());
             pstmt.setString(2, event.getEventName());
-            pstmt.setString(3,event.getEventDate());
+            pstmt.setString(3, event.getEventDate());
             pstmt.setString(4, event.getEventTime());
-            pstmt.setString(5,event.getEventInfo());
-            pstmt.setString(6,event.getEventOrganizer());
-            pstmt.setString(7,event.getCountry());
-            pstmt.setString(8,event.getCity());
+            pstmt.setString(5, event.getEventInfo());
+            pstmt.setString(6, event.getEventOrganizer());
+            pstmt.setString(7, event.getCountry());
+            pstmt.setString(8, event.getCity());
             pstmt.executeUpdate();
             System.out.println("Event saved into database!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    public void insertDonation( Donation donation , Volunteer volunteer)  {
 
-        String query = ""+"INSERT INTO donation(donationAmount,donationHistory,securityNbr) VALUES(?,?,?) ";
+    public void insertDonation(Donation donation, Volunteer volunteer) {
+
+        String query = "" + "INSERT INTO donation(donationAmount,donationHistory,securityNbr) VALUES(?,?,?) ";
 
         try (Connection conn = this.dbConnect();
              PreparedStatement preparedStmt = conn.prepareStatement(query)) {
 
-            preparedStmt.setString   (1, donation.getDonation());
-            preparedStmt.setString   (2, donation.getDonationDate());
-            preparedStmt.setString   (3, volunteer.getSecurtyNbr());
+            preparedStmt.setString(1, donation.getDonation());
+            preparedStmt.setString(2, donation.getDonationDate());
+            preparedStmt.setString(3, volunteer.getSecurtyNbr());
 
             preparedStmt.executeUpdate();
             System.out.println("Inserted donation!");
@@ -188,4 +197,88 @@ public class DatabaseConnection {
             System.out.println(e.getMessage());
         }
     }
+
+    public void updateFirstName(String user, Volunteer volunteer) {
+
+        String sql = "update volunteers set firstName = ?  where userName = ?  ";
+
+
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString(1, volunteer.getFirstname());
+            preparedStmt.setString(2, user);
+
+            preparedStmt.executeUpdate();
+            System.out.println("First name updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        // execute the java preparedstatement
+    }
+
+    public void updateLastName(String user, Volunteer volunteer)  {
+
+        String sql = "update volunteers set lastName = ?  where userName = ?  ";
+
+
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, volunteer.getLastname());
+            preparedStmt.setString(2,user);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Last name updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        // execute the java preparedstatement
+
+
+    }
+
+
+    public void updateAddress(String user, Volunteer volunteer)  {
+
+        String sql = "update volunteers set address = ?  where userName = ?  ";
+
+
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, volunteer.getAddress());
+            preparedStmt.setString(2,user);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Address updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        // execute the java preparedstatement
+
+
+    }
+
+    public void updatePhoneNbr(String user, Volunteer volunteer)  {
+
+        String sql = "update volunteers set phoneNbr = ?  where userName = ?  ";
+
+
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, volunteer.getPhoneNbr());
+            preparedStmt.setString(2,user);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Phone number updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        // execute the java preparedstatement
+
+
+    }
+
 }

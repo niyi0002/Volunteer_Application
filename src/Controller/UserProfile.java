@@ -3,6 +3,7 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class UserProfile {
+public class UserProfile implements Initializable {
 
     DatabaseConnection app =new DatabaseConnection();
 
@@ -60,23 +61,11 @@ public class UserProfile {
 
     Stage dialogStage = new Stage();
     Scene scene;
+    String user=SignIn.getCurrentUser();
 
     public void displayInfo(){
 
-        String user=SignIn.getCurrentUser();
 
-        try {
-            txtName.setText(app.getFirstName(user));
-            txtUsername.setText(app.getUserName(user));
-            txtPhnNbr.setText(app.getPhoneNbr(user));
-            txtEmail.setText(app.getEmail(user));
-            txtBirthday.setText(app.getBirthday(user));
-            txtAddress.setText(app.getAddress(user));
-            txtSsn.setText(app.getSecurityNbr(user));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
 /*
         String SSN=rs.getString(1);
@@ -109,6 +98,38 @@ public class UserProfile {
         dialogStage.setScene(scene);
         dialogStage.show();
 
+
+    }
+
+    @FXML
+    private void handleReturnButton(ActionEvent event) throws  IOException {
+        Node node = (Node) event.getSource();
+        dialogStage = (Stage) node.getScene().getWindow();
+        dialogStage.close();
+        try {
+            //Insert right fxml file for edit
+            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserMenu.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dialogStage.setScene(scene);
+        dialogStage.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            txtName.setText(app.getFirstName(user));
+            txtUsername.setText(app.getUserName(user));
+            txtPhnNbr.setText(app.getPhoneNbr(user));
+            txtEmail.setText(app.getEmail(user));
+            txtBirthday.setText(app.getBirthday(user));
+            txtAddress.setText(app.getAddress(user));
+            txtSsn.setText(app.getSecurityNbr(user));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

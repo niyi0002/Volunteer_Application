@@ -65,7 +65,7 @@ public class SignUp {
         DatabaseConnection db = new DatabaseConnection();
      //   java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(birthday.getValue());
         // insert three new rows
-        /*
+
         Volunteer volunteer = new Volunteer();
         volunteer.setSecurityNbr(ssnText.getText());
         volunteer.setUsername(usernameText.getText());
@@ -78,7 +78,7 @@ public class SignUp {
         volunteer.setBirthday(Date.valueOf(birthdayText.getText()));
         volunteer.setRole("volunteer");
         db.insert(volunteer);
-*/
+
 
     }
 
