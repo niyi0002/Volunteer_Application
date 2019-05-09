@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import sample.ChangeScene;
+
+import java.io.IOException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -23,6 +26,11 @@ public class Email {
 
     @FXML
     private Button buttonSend;
+
+    @FXML
+    private Button returnBotton;
+
+    ChangeScene cs = new ChangeScene();
 
 
     // Only change this part.
@@ -80,8 +88,15 @@ public class Email {
             me.printStackTrace();
         }
 
+    }
 
-
+    @FXML
+    void returnAction(ActionEvent event) {
+        try {
+            cs.sceneHandler("../View/AdminMenu.fxml",event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /*
 

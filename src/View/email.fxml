@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Email">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserProfile">
    <children>
       <Label layoutX="35.0" layoutY="62.0" text="FROM:">
          <font>
@@ -21,8 +21,13 @@
       </Label>
       <TextField fx:id="txtFrom" editable="false" layoutX="89.0" layoutY="58.0" prefHeight="25.0" prefWidth="214.0" text="VolunteerApplication123@gmail.com" />
       <TextField fx:id="txtTo" layoutX="89.0" layoutY="100.0" prefHeight="25.0" prefWidth="214.0" />
-      <TextArea fx:id="txtMessage" layoutX="63.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" promptText="Message" />
-      <Button fx:id="buttonSend" layoutX="292.0" layoutY="332.0" mnemonicParsing="false" onAction="#sendMessage" text="Send">
+      <TextArea fx:id="txtMessage" layoutX="99.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" promptText="Message" />
+      <Button fx:id="buttonSend" layoutX="317.0" layoutY="331.0" mnemonicParsing="false" onAction="#sendMessage" text="Send">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnBotton" layoutX="16.0" layoutY="331.0" mnemonicParsing="false" onAction="#returnAction" text="Return">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
