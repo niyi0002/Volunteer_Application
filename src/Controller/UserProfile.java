@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.ChangeScene;
 import sample.DatabaseConnection;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ import java.util.ResourceBundle;
 public class UserProfile implements Initializable {
 
     DatabaseConnection app =new DatabaseConnection();
+
+    ChangeScene cs= new ChangeScene();
 
     @FXML
     private Label username;
@@ -58,62 +61,23 @@ public class UserProfile implements Initializable {
     @FXML
     private TextField txtSsn;   //Done
 
-
-    Stage dialogStage = new Stage();
-    Scene scene;
     String user=SignIn.getCurrentUser();
-
-    public void displayInfo(){
-
-
-
-/*
-        String SSN=rs.getString(1);
-        String username=rs.getString(2);
-        String firstName=rs.getString(3);
-        String lastName=rs.getString(4);
-        String email=rs.getString(5);
-        String birthday=rs.getString(6);
-        String phoneNbr=rs.getString(7);
-        String address=rs.getString(8);
-
-        //här ska jag kalla på metoden i DatabaseConnection
-*/
-    }
-
-
 
     @FXML
     void editProfile(ActionEvent event) {
 
-        Node node = (Node) event.getSource();
-        dialogStage = (Stage) node.getScene().getWindow();
-        dialogStage.close();
         try {
-            //Insert right fxml file for edit
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/EditProfile.fxml")));
+            cs.sceneHandler("../View/EditProfile.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        dialogStage.setScene(scene);
-        dialogStage.show();
-
-
     }
 
     @FXML
     private void handleReturnButton(ActionEvent event) throws  IOException {
-        Node node = (Node) event.getSource();
-        dialogStage = (Stage) node.getScene().getWindow();
-        dialogStage.close();
-        try {
-            //Insert right fxml file for edit
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserMenu.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        dialogStage.setScene(scene);
-        dialogStage.show();
+
+        cs.sceneHandler("../View/UserMenu.fxml", event);
+
     }
 
     @Override

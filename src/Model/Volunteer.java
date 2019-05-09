@@ -14,7 +14,9 @@ public class Volunteer extends User {
         this.birthday = birthday ;
         this.address = address ;
     }
-    public Volunteer(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email, StringProperty password, StringProperty username , StringProperty birthday , StringProperty role) {
+    public Volunteer(StringProperty securityNbr, StringProperty firstname, StringProperty lastname,
+                     StringProperty email, StringProperty password, StringProperty username ,
+                     StringProperty birthday , StringProperty role) {
 
     }
     public Volunteer (){super();}

@@ -1,5 +1,6 @@
 package sample;
 
+import Controller.Email;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +19,19 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        /*
+        Main main = new Main();
+        main.runProgram();
+        */
         launch(args);
     }
+        /*
+    private void runProgram() {
+
+
+        connecta TO och Message till detta
+        Email.sendEmail("perhanovic98@gmail.com", "Testing message");
+    }
+*/
+
 }
