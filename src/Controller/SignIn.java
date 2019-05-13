@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.ChangeScene;
 import sample.DatabaseConnection;
 
 import java.io.IOException;
@@ -33,8 +34,8 @@ public class SignIn {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    Stage dialogStage = new Stage();
-    Scene scene;
+    ChangeScene cs = new ChangeScene();
+
 
     public SignIn() {
         connection = DatabaseConnection.dbConnect();
@@ -42,20 +43,22 @@ public class SignIn {
     }
 
     @FXML
-    private void handleSignIn(ActionEvent event) {
+    private void handleSignIn(ActionEvent event) throws IOException {
         String userName1 = userName.getText().toString();
         String password2 = password.getText().toString();
 
         Volunteer volunteer = new Volunteer();
         volunteer.setUsername(userName1);
         volunteer.setPassword(password2);
+        String roles = "volunteer";
 
-        String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ?";
+        String sql = "SELECT * FROM volunteers WHERE userName = ? and password = ? and role = ?";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userName1);
             preparedStatement.setString(2, password2);
+            preparedStatement.setString(3, roles);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.next()) {
 
@@ -68,33 +71,15 @@ public class SignIn {
             } else {
                 System.out.println("Succesful");
                 setCurrentUser(userName1);
-                Node node = (Node) event.getSource();
-                dialogStage = (Stage) node.getScene().getWindow();
-                dialogStage.close();
-                try {
-                    scene = new Scene(FXMLLoader.load(getClass().getResource("../View/UserMenu.fxml")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                dialogStage.setScene(scene);
-                dialogStage.show();
+                cs.sceneHandler("../View/UserMenu.fxml", event);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
         @FXML
-        private void handleReturnButton (ActionEvent event){
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            try {
-                scene = new Scene(FXMLLoader.load(getClass().getResource("../View/DefaultPage.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            dialogStage.setScene(scene);
-            dialogStage.show();
+        private void handleReturnButton (ActionEvent event) throws IOException {
+            cs.sceneHandler("../View/DefaultPage.fxml", event);
 
         }
 

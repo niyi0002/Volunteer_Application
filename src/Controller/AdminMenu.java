@@ -7,6 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sample.ChangeScene;
+
+import java.io.IOException;
 
 public class AdminMenu {
 
@@ -17,75 +20,42 @@ public class AdminMenu {
     private Button addEventsButton;
 
     @FXML
-    private Button returnButton;
+    private Button signOutButton;
 
     @FXML
     private Button viewEventsButton;
 
-    Stage dialogStage = new Stage();
-    Scene scene;
+    ChangeScene cs = new ChangeScene();
 
     @FXML
-    void handleAddEvents(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/AddEvent.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleAddEvents(ActionEvent event) throws IOException {
+
+           cs.sceneHandler("../View/AddEvent.fxml", event);
 
 
     }
 
     @FXML
-    void handleViewEvents(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Events.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleViewEvents(ActionEvent event) throws  IOException{
+        cs.sceneHandler("../View/Events.fxml", event);
+
 
 
     }
 
     @FXML
-    void handleViewVolunteers(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Events.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+    void handleViewVolunteers(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/DefaultPage.fxml", event);
+
         }
 
 
-    }
 
 
     @FXML
-    void handleReturnButton(ActionEvent event) {
-        try {
-            Node node = (Node) event.getSource();
-            dialogStage = (Stage) node.getScene().getWindow();
-            dialogStage.close();
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/Events.fxml")));
-            dialogStage.setScene(scene);
-            dialogStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    void handleSignOutButton(ActionEvent event) throws  IOException {
+        cs.sceneHandler("../View/DefaultPage.fxml", event);
+
     }
 
 

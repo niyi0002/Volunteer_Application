@@ -67,7 +67,6 @@ private Label timeLabel;
         java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(eventDate.getValue());
         // insert three new rows
         Event event1 = new Event();
-        event1.setEventID(Integer.parseInt(eventId.getText()));
         event1.setEventName(eventName.getText());
         event1.setEventDate(gettedDatePickerDate);
         event1.setEventTime(eventTime.getText());

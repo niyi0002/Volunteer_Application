@@ -3,12 +3,14 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.ChangeScene;
 import sample.DatabaseConnection;
 
 import java.io.IOException;
@@ -18,9 +20,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class UserProfile {
+public class UserProfile implements Initializable {
 
     DatabaseConnection app = new DatabaseConnection();
+
+    ChangeScene cs= new ChangeScene();
 
     @FXML
     private Label username;
@@ -57,14 +61,27 @@ public class UserProfile {
     @FXML
     private TextField txtSsn;   //Done
 
+    String user=SignIn.getCurrentUser();
 
-    Stage dialogStage = new Stage();
-    Scene scene;
+    @FXML
+    void editProfile(ActionEvent event) {
 
-    public void displayInfo(){
+        try {
+            cs.sceneHandler("../View/EditProfile.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        String user=SignIn.getCurrentUser();
+    @FXML
+    private void handleReturnButton(ActionEvent event) throws  IOException {
 
+        cs.sceneHandler("../View/UserMenu.fxml", event);
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         try {
             txtName.setText(app.getFirstName(user));
             txtUsername.setText(app.getUserName(user));
@@ -77,38 +94,6 @@ public class UserProfile {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-/*
-        String SSN=rs.getString(1);
-        String username=rs.getString(2);
-        String firstName=rs.getString(3);
-        String lastName=rs.getString(4);
-        String email=rs.getString(5);
-        String birthday=rs.getString(6);
-        String phoneNbr=rs.getString(7);
-        String address=rs.getString(8);
-
-        //här ska jag kalla på metoden i DatabaseConnection
-*/
-    }
-
-
-
-    @FXML
-    void editProfile(ActionEvent event) {
-
-        Node node = (Node) event.getSource();
-        dialogStage = (Stage) node.getScene().getWindow();
-        dialogStage.close();
-        try {
-            //Insert right fxml file for edit
-            scene = new Scene(FXMLLoader.load(getClass().getResource("../View/EditProfile.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        dialogStage.setScene(scene);
-        dialogStage.show();
-
 
     }
 }

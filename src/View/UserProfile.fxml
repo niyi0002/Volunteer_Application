@@ -50,9 +50,9 @@
          </font>
       </Label>
       <ImageView fitHeight="221.0" fitWidth="200.0" layoutX="350.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="EditButton" layoutX="521.0" layoutY="349.0" mnemonicParsing="false" onAction="#editProfile" prefHeight="37.0" prefWidth="59.0" text="Edit" wrapText="true">
+      <Button fx:id="EditButton" layoutX="491.0" layoutY="355.0" mnemonicParsing="false" onAction="#editProfile" text="Edit profile" wrapText="true">
          <font>
-            <Font name="Times New Roman Bold" size="14.0" />
+            <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
       <TextField fx:id="txtName" layoutX="112.0" layoutY="59.0" mouseTransparent="true" prefHeight="26.0" prefWidth="136.0" />
@@ -62,5 +62,10 @@
       <TextField fx:id="txtAddress" editable="false" layoutX="126.0" layoutY="252.0" mouseTransparent="true" />
       <TextField fx:id="txtEmail" editable="false" layoutX="108.0" layoutY="295.0" mouseTransparent="true" prefHeight="26.0" prefWidth="170.0" />
       <TextField fx:id="txtSsn" editable="false" layoutX="425.0" layoutY="295.0" mouseTransparent="true" prefHeight="26.0" prefWidth="77.0" />
+      <Button fx:id="returnButton" layoutX="27.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleReturnButton" text="Return" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
