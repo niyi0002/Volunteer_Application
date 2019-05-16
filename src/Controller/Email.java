@@ -57,7 +57,7 @@ public class Email {
         props.put("mail.smtp.auth", "true");
 
         Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+        Message message = new MimeMessage(session);
 
         String[] recipientEmail = new String[]{
                 recipientEmailString}; //Change the String into a String[]
