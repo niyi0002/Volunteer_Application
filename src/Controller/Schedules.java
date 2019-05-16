@@ -1,5 +1,6 @@
 package Controller;
-import Model.User;
+
+import Model.Schedule;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-public class Schedule implements Initializable {
+public class Schedules implements Initializable {
 
 
     @FXML
@@ -43,6 +44,8 @@ public class Schedule implements Initializable {
     @FXML
     private TableColumn<Schedule, String> scheduleCityColumn;
 
+    public Schedules(int userID, String causeOfEvent, LocalTime eventTIME, LocalDate eventDATE, String country, String city) {
+    }
 
 
     @Override
@@ -79,11 +82,11 @@ public class Schedule implements Initializable {
 
 
             while (resultSet.next()) {
-                        Schedule newSchedule = new Schedule(
+                Schedule newSchedule = new Schedule(
                         resultSet.getInt("userID"),
                         resultSet.getString("causeOfEvent"),
                         resultSet.getTime("eventTIME").toLocalTime(),
-                                resultSet.getDate("eventDATE").toLocalDate(),
+                        resultSet.getDate("eventDATE").toLocalDate(),
                         resultSet.getString("country"),
                         resultSet.getString("city"));
 

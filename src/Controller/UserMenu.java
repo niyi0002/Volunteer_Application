@@ -36,12 +36,12 @@ public class UserMenu {
 
     @FXML
     void handleEvents(ActionEvent event) throws IOException{
-        cs.sceneHandler("../View/Schedule.fxml",event);
+        cs.sceneHandler("../View/Schedules.fxml",event);
     }
 
     @FXML
     void handleSchedule(ActionEvent event) throws IOException {
-        cs.sceneHandler("../View/Schedule.fxml",event);
+        cs.sceneHandler("../View/Schedules.fxml",event);
     }
 
     @FXML
