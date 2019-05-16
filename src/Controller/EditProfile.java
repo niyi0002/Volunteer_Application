@@ -4,10 +4,8 @@ import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
@@ -64,7 +62,7 @@ public class EditProfile implements Initializable {
         }
 
         if (!lastNameField.getText().equals("")) {
-            volunteer.setLastname(lastNameField.getText());
+            volunteer.setLastName(lastNameField.getText());
             databaseConnection.updateLastName(user, volunteer);
         }
 

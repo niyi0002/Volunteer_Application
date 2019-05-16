@@ -37,7 +37,7 @@ public class DatabaseConnection {
             pstmt.setString(2, volunteer.getUsername());
             pstmt.setString(3, volunteer.getPassword());
             pstmt.setString(4, volunteer.getFirstname());
-            pstmt.setString(5, volunteer.getLastname());
+            pstmt.setString(5, volunteer.getLastName());
             pstmt.setString(6, volunteer.getEmail());
             pstmt.setString(7, volunteer.getAddress());
             pstmt.setString(8, volunteer.getPhoneNbr());
@@ -229,7 +229,7 @@ public class DatabaseConnection {
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
 
-            preparedStmt.setString   (1, volunteer.getLastname());
+            preparedStmt.setString   (1, volunteer.getLastName());
             preparedStmt.setString(2,user);
 
             preparedStmt.executeUpdate();

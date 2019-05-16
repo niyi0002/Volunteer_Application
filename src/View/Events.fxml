@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Events">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Schedule">
    <children>
       <VBox alignment="CENTER" layoutX="184.0" layoutY="59.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Events">
+            <Label fx:id="eventLable" text="Events">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="eventTable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="eventIDColumn" prefWidth="75.0" text="Event ID" />
+                <TableColumn fx:id="eventID" prefWidth="75.0" text="Event ID" />
                 <TableColumn fx:id="eventNameColumn" prefWidth="140.0" text="Event Name" />
                   <TableColumn fx:id="eventTimeColumn" prefWidth="90.0" text="Event Time" />
                   <TableColumn fx:id="eventDateColumn" prefWidth="100.0" text="Event Date" />

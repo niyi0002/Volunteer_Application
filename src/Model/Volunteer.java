@@ -4,13 +4,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class Volunteer extends User {
     private StringProperty birthday = new SimpleStringProperty(this, "birthday");
     private StringProperty address = new SimpleStringProperty(this, "address");
     public Volunteer( StringProperty birthday, StringProperty address){
 
+        super(resultSet.getString("firstName"), resultSet.getString("lastName"), resultSet.getString("phoneNumber"), resultSet.getDate("birthday").toLocalDate());
         this.birthday = birthday ;
         this.address = address ;
     }
@@ -18,8 +18,9 @@ public class Volunteer extends User {
                      StringProperty email, StringProperty password, StringProperty username ,
                      StringProperty birthday , StringProperty role) {
 
+        super(resultSet.getString("firstName"), resultSet.getString("lastName"), resultSet.getString("phoneNumber"), resultSet.getDate("birthday").toLocalDate());
     }
-    public Volunteer (){super();}
+    public Volunteer (){super(resultSet.getString("firstName"), resultSet.getString("lastName"), resultSet.getString("phoneNumber"), resultSet.getDate("birthday").toLocalDate());}
     public void setAddress(String address) {
         this.address.set(address);
     }
@@ -38,5 +39,6 @@ public class Volunteer extends User {
     public StringProperty addressProperty() {
         return address;
     }
+
 
 }

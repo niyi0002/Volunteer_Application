@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Schedule">
    <children>
       <VBox alignment="CENTER" layoutX="392.0" layoutY="85.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -17,13 +16,15 @@
                   <Font name="System Bold Italic" size="31.0" />
                </font>
             </Label>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="scheduleTableView" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="140.0" text="VolunteerID" />
-                <TableColumn prefWidth="180.0" text="Cause of event " />
-                  <TableColumn prefWidth="130.0" text="Time " />
-                  <TableColumn minWidth="0.0" prefWidth="150.0" text="Date " />
-                  <TableColumn prefWidth="175.0" text="Place" />
+                <TableColumn fx:id="userIDColumn" prefWidth="140.0" text="UserID" />
+                <TableColumn fx:id="causeOfEventColumn" prefWidth="180.0" text="Cause of event " />
+                  <TableColumn fx:id="scheduleLocalTimeTableColumn" prefWidth="109.0" text="Time " />
+                  <TableColumn fx:id="scheduleLocalDateTableColumn" minWidth="0.0" prefWidth="144.0" text="Date " />
+                  <TableColumn fx:id="scheduleCountryColumn" prefWidth="122.0" text="Country" />
+                  <TableColumn fx:id="scheduleCityColumn" prefWidth="122.0" text="City" />
+                  <TableColumn fx:id="eventCountryColumn" prefWidth="122.0" text="Country" />
               </columns>
             </TableView>
          </children>

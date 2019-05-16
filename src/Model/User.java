@@ -12,29 +12,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.SecureRandom;
-import java.sql.*;
 import java.time.LocalDate;
-import java.time.Period;
 
-public abstract class User {
+public class User {
 
     private File imageFile;
     private StringProperty userID =  new SimpleStringProperty(this, "userID");
     private StringProperty securityNbr = new SimpleStringProperty(this, "securityNbr");
-    private StringProperty firstname = new SimpleStringProperty(this, "firstname");
-    private StringProperty lastname = new SimpleStringProperty(this, "lastname");
+    private StringProperty firstName = new SimpleStringProperty(this, "firstName");
+    private StringProperty lastName = new SimpleStringProperty(this, "lastName");
     private StringProperty email = new SimpleStringProperty(this, "email");
     private StringProperty username = new SimpleStringProperty(this, "username");
     private StringProperty password = new SimpleStringProperty(this, "password");
     private StringProperty phoneNbr = new SimpleStringProperty(this, "phoneNbr");
     private StringProperty role = new SimpleStringProperty(this, "role");
 
-    public User(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email
+    public User(StringProperty securityNbr, StringProperty firstName, StringProperty lastName, StringProperty email
             , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty userID, StringProperty role) {
         this.userID = userID;
         this.securityNbr = securityNbr;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -43,9 +41,11 @@ public abstract class User {
 
     }
 
-    public User() {
 
+
+    public User(String firstName, String lastName, String phoneNbr, String securityNbr, LocalDate birthday) {
     }
+
 
     public String getUserID() {
         return userID.get(); }
@@ -62,11 +62,11 @@ public abstract class User {
     }
 
     public void setFirstname(String firstname) {
-        this.firstname.set(firstname);
+        this.firstName.set(firstname);
     }
 
-    public void setLastname(String lastname) {
-        this.lastname.set(lastname);
+    public void setLastName(String lastName) {
+        this.lastName.set(lastName);
     }
 
     public void setEmail(String email) {
@@ -95,11 +95,11 @@ public abstract class User {
     }
 
     public String getFirstname() {
-        return firstname.get();
+        return firstName.get();
     }
 
-    public String getLastname() {
-        return lastname.get();
+    public String getLastName() {
+        return lastName.get();
     }
 
     public String getEmail() {
@@ -139,11 +139,11 @@ public abstract class User {
     }
 
     public StringProperty firstnameProperty() {
-        return firstname;
+        return firstName;
     }
 
-    public StringProperty lastnameProperty() {
-        return lastname;
+    public StringProperty lastNameProperty() {
+        return lastName;
     }
 
     public StringProperty emailProperty() {

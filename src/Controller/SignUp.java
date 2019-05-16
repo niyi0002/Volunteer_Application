@@ -71,7 +71,7 @@ public class SignUp {
         volunteer.setUsername(usernameText.getText());
         volunteer.setPassword(passwordField.getText());
         volunteer.setFirstname(firstNameText.getText());
-        volunteer.setLastname(lastNameText.getText());
+        volunteer.setLastName(lastNameText.getText());
         volunteer.setEmail(emailText.getText());
         volunteer.setAddress(addressText.getText());
         volunteer.setPhoneNbr(phoneNbrText.getText());
