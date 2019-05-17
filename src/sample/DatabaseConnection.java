@@ -388,4 +388,37 @@ public class DatabaseConnection {
 
         return eventList;
     }
+
+    public ObservableList<Volunteer> volunteerInfo(){
+        String roles = "volunteer";
+        ObservableList<Volunteer>eventList= FXCollections.observableArrayList();
+
+        String query = "select firstName,lastName,securityNbr,userName,role,email,birthday,address,phoneNbr from volunteers where role = '"+roles+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Volunteer volunteer = new Volunteer();
+                volunteer.setFirstname(resultSet.getString(1));
+                volunteer.setLastname(resultSet.getString(2));
+                volunteer.setSecurityNbr(resultSet.getString(3));
+                volunteer.setUsername(resultSet.getString(4));
+                volunteer.setRole(resultSet.getString(5));
+                volunteer.setEmail(resultSet.getString(6));
+                volunteer.setBirthday(Date.valueOf(resultSet.getString(7)));
+                volunteer.setAddress(resultSet.getString(8));
+                volunteer.setPhoneNbr(resultSet.getString(9));
+                eventList.add(volunteer);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
+
+
+
+
 }

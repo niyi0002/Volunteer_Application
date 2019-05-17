@@ -14,6 +14,9 @@ import java.io.IOException;
 public class AdminMenu {
 
     @FXML
+    private Button sendEmail;
+
+    @FXML
     private Button volunteersButton;
 
     @FXML
@@ -45,7 +48,7 @@ public class AdminMenu {
 
     @FXML
     void handleViewVolunteers(ActionEvent event) throws IOException {
-        cs.sceneHandler("../View/DefaultPage.fxml", event);
+        cs.sceneHandler("../View/ListOfVolunteers.fxml", event);
 
         }
 
@@ -56,6 +59,12 @@ public class AdminMenu {
     void handleSignOutButton(ActionEvent event) throws  IOException {
         cs.sceneHandler("../View/DefaultPage.fxml", event);
 
+    }
+
+
+    @FXML
+    void handleSendEmail(ActionEvent event) throws IOException{
+        cs.sceneHandler("../View/Email.fxml", event);
     }
 
 

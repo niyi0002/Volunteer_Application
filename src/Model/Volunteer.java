@@ -40,4 +40,10 @@ public class Volunteer extends User {
         return address;
     }
 
+    @Override
+    public String toString() {
+        return  " ID : "+getSecurtyNbr()+ "\n Firstname : " +getFirstname()+ "\n Lastname : "+getLastname()+ "\n Username : " +getUsername()+ "\n Email : " +getEmail()+ "\n Birthday : " +getBirthday()+
+                "\n Address : " +getAddress()+ "\n Phone Number : " +getPhoneNbr();
+    }
+
 }
