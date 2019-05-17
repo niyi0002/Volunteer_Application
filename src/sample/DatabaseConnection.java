@@ -37,7 +37,7 @@ public class DatabaseConnection {
             pstmt.setString(2, volunteer.getUsername());
             pstmt.setString(3, volunteer.getPassword());
             pstmt.setString(4, volunteer.getFirstname());
-            pstmt.setString(5, volunteer.getLastName());
+            pstmt.setString(5, volunteer.getLastname());
             pstmt.setString(6, volunteer.getEmail());
             pstmt.setString(7, volunteer.getAddress());
             pstmt.setString(8, volunteer.getPhoneNbr());
@@ -229,7 +229,7 @@ public class DatabaseConnection {
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
 
-            preparedStmt.setString   (1, volunteer.getLastName());
+            preparedStmt.setString   (1, volunteer.getLastname());
             preparedStmt.setString(2,user);
 
             preparedStmt.executeUpdate();
@@ -332,5 +332,60 @@ public class DatabaseConnection {
 
         return donationHistory;
     }
+    public void registerToAnEvent(String userid , int eventid , Event event , Volunteer volunteer){
 
+        String sql = ""+"INSERT INTO volunteer_has_events(eventID,securityNbr,history) VALUES(?,?,?)";
+
+
+        try (Connection conn = this.dbConnect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, event.getEventID());
+            pstmt.setString(2, volunteer.getSecurtyNbr());
+            pstmt.setString(3,event.getEventDate());
+
+            pstmt.executeUpdate();
+            System.out.println("Volunteer has registered to an event!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public String getEventDate(int eventid) throws SQLException {
+        String date = null;
+
+        String query = "select eventDate from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                date = resultSet.getString(1);
+            }
+        }
+        return date ;
+    }
+    public ObservableList<Event> eventInformation(){
+        ObservableList<Event>eventList= FXCollections.observableArrayList();
+        String query = "select * from events ";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Event event = new Event();
+                event.setEventID(resultSet.getInt(1));
+                event.setEventName(resultSet.getString(2));
+                event.setEventDate(resultSet.getDate(3));
+                event.setEventTime(resultSet.getString(4));
+                event.setEventInfo(resultSet.getString(5));
+                event.setEventOrganizer(resultSet.getString(6));
+                event.setCountry(resultSet.getString(7));
+                event.setCity(resultSet.getString(8));
+                eventList.add(event);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
 }

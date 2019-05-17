@@ -2,6 +2,7 @@ package Model;
 
 
 
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,27 +13,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.SecureRandom;
+import java.sql.*;
 import java.time.LocalDate;
+import java.time.Period;
 
-public class User {
+public abstract class User {
 
     private File imageFile;
-    private StringProperty userID =  new SimpleStringProperty(this, "userID");
     private StringProperty securityNbr = new SimpleStringProperty(this, "securityNbr");
-    private StringProperty firstName = new SimpleStringProperty(this, "firstName");
-    private StringProperty lastName = new SimpleStringProperty(this, "lastName");
+    private StringProperty firstname = new SimpleStringProperty(this, "firstname");
+    private StringProperty lastname = new SimpleStringProperty(this, "lastname");
     private StringProperty email = new SimpleStringProperty(this, "email");
     private StringProperty username = new SimpleStringProperty(this, "username");
     private StringProperty password = new SimpleStringProperty(this, "password");
     private StringProperty phoneNbr = new SimpleStringProperty(this, "phoneNbr");
     private StringProperty role = new SimpleStringProperty(this, "role");
 
-    public User(StringProperty securityNbr, StringProperty firstName, StringProperty lastName, StringProperty email
-            , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty userID, StringProperty role) {
-        this.userID = userID;
+    public User(StringProperty securityNbr, StringProperty firstname, StringProperty lastname, StringProperty email
+            , StringProperty password, StringProperty username, StringProperty phoneNbr, StringProperty role) {
         this.securityNbr = securityNbr;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -41,32 +42,21 @@ public class User {
 
     }
 
+    public User() {
 
-
-    public User(String firstName, String lastName, String phoneNbr, String securityNbr, LocalDate birthday) {
     }
 
-
-    public String getUserID() {
-        return userID.get(); }
-
-    public StringProperty userIDProperty() {
-        return userID; }
-
-    public void setUserID(String userID) {
-        this.userID.set(userID);
-    }
 
     public void setSecurityNbr(String securityNbr) {
         this.securityNbr.set(securityNbr);
     }
 
     public void setFirstname(String firstname) {
-        this.firstName.set(firstname);
+        this.firstname.set(firstname);
     }
 
-    public void setLastName(String lastName) {
-        this.lastName.set(lastName);
+    public void setLastname(String lastname) {
+        this.lastname.set(lastname);
     }
 
     public void setEmail(String email) {
@@ -95,11 +85,11 @@ public class User {
     }
 
     public String getFirstname() {
-        return firstName.get();
+        return firstname.get();
     }
 
-    public String getLastName() {
-        return lastName.get();
+    public String getLastname() {
+        return lastname.get();
     }
 
     public String getEmail() {
@@ -139,11 +129,11 @@ public class User {
     }
 
     public StringProperty firstnameProperty() {
-        return firstName;
+        return firstname;
     }
 
-    public StringProperty lastNameProperty() {
-        return lastName;
+    public StringProperty lastnameProperty() {
+        return lastname;
     }
 
     public StringProperty emailProperty() {

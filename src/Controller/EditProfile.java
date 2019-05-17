@@ -62,7 +62,7 @@ public class EditProfile implements Initializable {
         }
 
         if (!lastNameField.getText().equals("")) {
-            volunteer.setLastName(lastNameField.getText());
+            volunteer.setLastname(lastNameField.getText());
             databaseConnection.updateLastName(user, volunteer);
         }
 

@@ -6,13 +6,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class Event {
 
-    private IntegerProperty eventID  = new SimpleIntegerProperty(this, "eventID");
+    private IntegerProperty eventID = new SimpleIntegerProperty(this, "eventID");
     private StringProperty eventName = new SimpleStringProperty(this, "eventName");
     private StringProperty eventDate = new SimpleStringProperty(this, "eventDate");
     private StringProperty eventTime = new SimpleStringProperty(this, "eventTime");
@@ -21,9 +18,9 @@ public class Event {
     private StringProperty country = new SimpleStringProperty(this, "country");
     private StringProperty city = new SimpleStringProperty(this, "city");
 
-    public Event(IntegerProperty eventID, StringProperty eventName, StringProperty eventDate,
-                 StringProperty eventTime, StringProperty eventInfo, StringProperty eventOrganizer,
-                 StringProperty country, StringProperty city) {
+
+    public Event(IntegerProperty eventID, StringProperty eventName, StringProperty eventDate, StringProperty eventTime
+            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -32,9 +29,10 @@ public class Event {
         this.eventOrganizer = eventOrganizer;
         this.country = country;
         this.city = city;
+
     }
 
-    public Event(String eventName, Time eventTIME, String eventInfo, String eventOrganizer, String country, String city, LocalDate eventDATE) {
+    public Event() {
     }
 
     public void setEventName(String eventName) {
@@ -42,12 +40,7 @@ public class Event {
     }
 
     public void setEventID(int eventID) {
-        if (eventID >= 0) {
-            this.eventID.set(eventID);
-
-        }else
-            throw new IllegalArgumentException("eventID must be greater than 0");
-
+        this.eventID.set(eventID);
     }
 
     public void setEventDate(Date eventDate) {
@@ -111,7 +104,7 @@ public class Event {
     }
 
     public StringProperty eventNameProperty() {
-          return eventName;
+        return eventName;
     }
 
     public StringProperty eventDateProperty() {

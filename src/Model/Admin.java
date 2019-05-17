@@ -2,10 +2,10 @@ package Model;
 
 import java.time.LocalDate;
 
-public class Admin extends User{
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 
-    public Admin (){
-        super();
-    }
+public class Admin extends User {
 
+    public Admin (){super();}
 }
