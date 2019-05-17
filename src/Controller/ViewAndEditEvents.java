@@ -78,7 +78,7 @@ public class ViewAndEditEvents implements Initializable {
         this.organizer.setCellValueFactory(new PropertyValueFactory("eventOrganizer"));
         this.country.setCellValueFactory(new PropertyValueFactory("country"));
         this.city.setCellValueFactory(new PropertyValueFactory("city"));
-        //editEvent();
+        editEvent();
 
         this.table.setItems(eventObservableList);
         this.table.setEditable(true);
