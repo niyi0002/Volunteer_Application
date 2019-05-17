@@ -40,7 +40,7 @@ public class AdminMenu {
 
     @FXML
     void handleViewEvents(ActionEvent event) throws  IOException{
-        cs.sceneHandler("../View/Schedules.fxml", event);
+        cs.sceneHandler("../View/ViewAndEditEvents.fxml", event);
 
 
 

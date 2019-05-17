@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="596.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewAndEditEvents">
+    <effect>
+        <InnerShadow />
+    </effect>
+    <children>
+        <TableView fx:id="table" layoutX="30.0" layoutY="59.0" opacity="0.7" prefHeight="293.0" prefWidth="758.0">
+            <columns>
+                <TableColumn fx:id="eventId" prefWidth="75.0" text="EventID" />
+                <TableColumn fx:id="eventName" prefWidth="75.0" text="EventName" />
+                <TableColumn fx:id="date" prefWidth="82.0" text="Date" />
+                <TableColumn fx:id="time" prefWidth="73.0" text="Time" />
+                <TableColumn fx:id="info" prefWidth="127.0" text="Information" />
+                <TableColumn fx:id="organizer" prefWidth="114.0" text="Organizer" />
+                <TableColumn fx:id="country" prefWidth="105.0" text="Country" />
+                <TableColumn fx:id="city" prefWidth="106.0" text="City" />
+            </columns>
+        </TableView>
+        <TextField fx:id="search" layoutX="32.0" layoutY="14.0" opacity="0.5" prefHeight="25.0" prefWidth="305.0" promptText="search events">
+            <font>
+                <Font name="Times New Roman" size="14.0" />
+            </font>
+        </TextField>
+        <Label fx:id="displayRow" layoutX="153.0" layoutY="382.0" prefHeight="17.0" prefWidth="548.0" />
+        <ComboBox fx:id="comboBox" layoutX="580.0" layoutY="14.0" opacity="0.7" prefWidth="150.0" promptText="Order List By" />
+        <Button fx:id="goBack" layoutX="704.0" layoutY="539.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go Back">
+            <font>
+                <Font name="Times New Roman" size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
