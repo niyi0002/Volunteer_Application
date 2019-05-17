@@ -9,11 +9,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 public class ViewAndEditEvents implements Initializable {
@@ -132,4 +134,55 @@ public class ViewAndEditEvents implements Initializable {
         cs.sceneHandler("../View/AdminMenu.fxml",event);
 
     }
+
+    public void editEvent(){
+        eventName.setCellFactory(TextFieldTableCell.forTableColumn());
+        eventName.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setEventName(event.getNewValue());
+            db.updateEventName(event.getNewValue(),event.getRowValue().getEventID());
+        });
+
+        // date.setCellFactory(TextFieldTableCell.forTableColumn());
+        date.setCellFactory(TextFieldTableCell.forTableColumn());
+        date.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setEventDate(Date.valueOf(event.getNewValue()));
+            db.updateEventDate(Date.valueOf(event.getNewValue()), event.getRowValue().getEventID());
+        });
+
+        time.setCellFactory(TextFieldTableCell.forTableColumn());
+        time.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setEventTime(event.getNewValue());
+            db.updateEventTime(event.getNewValue(),event.getRowValue().getEventID());
+        });
+        info.setCellFactory(TextFieldTableCell.forTableColumn());
+        info.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setEventInfo(event.getNewValue());
+            db.updateEventInfo(event.getNewValue(),event.getRowValue().getEventID());
+        });
+        organizer.setCellFactory(TextFieldTableCell.forTableColumn());
+        organizer.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setEventOrganizer(event.getNewValue());
+            db.updateEventOrganizer(event.getNewValue(),event.getRowValue().getEventID());
+        });
+        country.setCellFactory(TextFieldTableCell.forTableColumn());
+        country.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setCountry(event.getNewValue());
+            db.updateCountry(event.getNewValue(),event.getRowValue().getEventID());
+        });
+        city.setCellFactory(TextFieldTableCell.forTableColumn());
+        city.setOnEditCommit(event -> {
+            Event event2 = event.getRowValue();
+            event2.setCity(event.getNewValue());
+            db.updateCity(event.getNewValue(),event.getRowValue().getEventID());
+        });
+
+    }
+
+
 }

@@ -418,6 +418,120 @@ public class DatabaseConnection {
         return eventList;
     }
 
+    public void updateEventName(String newEventName , int eventId)  {
+
+        String sql = "update event set eventName = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newEventName);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event name updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventDate(Date newDate , int eventId)  {
+
+        String sql = "update event set eventDate = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setDate   (1, newDate);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event date updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventTime(String newTime , int eventId)  {
+
+        String sql = "update event set eventTime = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newTime);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event time updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventInfo(String newInfo , int eventId)  {
+
+        String sql = "update event set eventInfo = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newInfo);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event info updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventOrganizer(String newOrganizer , int eventId)  {
+
+        String sql = "update event set eventOrganizer = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newOrganizer);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event organizer updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateCountry(String newCountry , int eventId)  {
+
+        String sql = "update event set country = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newCountry);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event country updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateCity(String newCity , int eventId)  {
+
+        String sql = "update event set city = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newCity);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event city updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 
 
