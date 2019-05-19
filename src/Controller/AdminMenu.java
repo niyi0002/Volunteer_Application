@@ -35,7 +35,6 @@ public class AdminMenu {
 
            cs.sceneHandler("../View/AddEvent.fxml", event);
 
-
     }
 
     @FXML

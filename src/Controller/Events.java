@@ -62,10 +62,12 @@ public class Events implements Initializable {
     @FXML
     private Button goBack;
 
-    DatabaseConnection db = new DatabaseConnection();
-    ChangeScene cs = new ChangeScene();
+    private DatabaseConnection db = new DatabaseConnection();
+    private ChangeScene cs = new ChangeScene();
     private ObservableList<Event> eventObservableList = db.eventInformation();
-
+    private Volunteer volunteer = new Volunteer();
+    private Event  event1 = new Event();
+    private String user = SignIn.getCurrentUser();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -134,13 +136,10 @@ public class Events implements Initializable {
 
     @FXML
     private void handleRegister(ActionEvent event) throws SQLException {
-        Volunteer volunteer = new Volunteer();
-        DatabaseConnection db = new DatabaseConnection();
-        Event  event1 = new Event();
-        int eventid = Integer.parseInt(enterID.getText());
-        String user = SignIn.getCurrentUser();
         String personID = db.getSecurityNbr(user);
         volunteer.setSecurityNbr(personID);
+        int eventid = Integer.parseInt(enterID.getText());
+
         event1.setEventID(eventid);
         event1.setEventDate(java.sql.Date.valueOf(db.getEventDate(eventid)));
         db.registerToAnEvent(personID,eventid,event1,volunteer);
