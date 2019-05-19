@@ -63,12 +63,12 @@ public class EditProfile implements Initializable {
         String user = SignIn.getCurrentUser();
 
 
-        if (!firstNameField.getText().equals(databaseConnection.getFirstName(user)) && firstNameField.getText().matches(NAME)) {
+        if (!firstNameField.getText().equals(databaseConnection.getFirstName(user)) || firstNameField.getText().matches(NAME)) {
             volunteer.setFirstname(firstNameField.getText());
             databaseConnection.updateFirstName(user, volunteer);
         } else {alertBox1();}
 
-        if (!lastNameField.getText().equals(databaseConnection.getLastName(user)) && lastNameField.getText().matches(NAME)) {
+        if (!lastNameField.getText().equals(databaseConnection.getLastName(user)) || lastNameField.getText().matches(NAME)) {
             volunteer.setLastname(lastNameField.getText());
             databaseConnection.updateLastName(user, volunteer);
         } else {alertBox1();}
@@ -78,7 +78,7 @@ public class EditProfile implements Initializable {
             databaseConnection.updateAddress(user, volunteer);
         }
 
-        if (!phoneNbrField.getText().equals(databaseConnection.getPhoneNbr(user)) && phoneNbrField.getText().matches(PHONE)) {
+        if (!phoneNbrField.getText().equals(databaseConnection.getPhoneNbr(user)) || phoneNbrField.getText().matches(PHONE)) {
             volunteer.setPhoneNbr(phoneNbrField.getText());
             databaseConnection.updatePhoneNbr(user, volunteer);
         }else{alertBox2();}
@@ -88,7 +88,7 @@ public class EditProfile implements Initializable {
     private void alertBox1() {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setHeaderText("Input invalid");
-        errorAlert.setContentText("First name/last name can not contain digits.");
+        errorAlert.setContentText("Changes must be done and first name/last name can not contain digits.");
         errorAlert.showAndWait();
         System.out.println("Failed");
 
