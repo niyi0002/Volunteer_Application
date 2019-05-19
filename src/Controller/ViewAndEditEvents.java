@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
+import javafx.scene.control.Tooltip;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,12 +61,26 @@ public class ViewAndEditEvents implements Initializable {
     @FXML
     private Button goBack;
 
+    @FXML
+    private Button helpButton;
+
     DatabaseConnection db = new DatabaseConnection();
     ChangeScene cs = new ChangeScene();
     private ObservableList<Event> eventObservableList = db.eventInformation();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText("To edit events, click on the field you wish to change.");
+        helpButton.setTooltip(tooltip);
+
+
+
+
+
+
 
         comboBox.getItems().add("Ascending order");
         comboBox.getItems().add("Descending order");
@@ -185,4 +201,8 @@ public class ViewAndEditEvents implements Initializable {
     }
 
 
+    @FXML
+    private void handleHelpButton(ActionEvent event) throws IOException {
+
+    }
 }

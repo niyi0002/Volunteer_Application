@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="596.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewAndEditEvents">
+<AnchorPane prefHeight="596.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewAndEditEvents">
     <effect>
         <InnerShadow />
     </effect>
@@ -34,10 +34,11 @@
         </TextField>
         <Label fx:id="displayRow" layoutX="153.0" layoutY="382.0" prefHeight="17.0" prefWidth="548.0" />
         <ComboBox fx:id="comboBox" layoutX="580.0" layoutY="14.0" opacity="0.7" prefWidth="150.0" promptText="Order List By" />
-        <Button fx:id="goBack" layoutX="704.0" layoutY="539.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go Back">
+        <Button fx:id="goBack" layoutX="678.0" layoutY="538.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go Back">
             <font>
                 <Font name="Times New Roman" size="14.0" />
             </font>
         </Button>
+      <Button fx:id="helpButton" alignment="CENTER" layoutX="756.0" layoutY="538.0" mnemonicParsing="false" onAction="#handleHelpButton" prefHeight="11.0" prefWidth="11.0" text="?" />
     </children>
 </AnchorPane>

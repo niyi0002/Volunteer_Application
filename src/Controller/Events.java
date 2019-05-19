@@ -136,19 +136,33 @@ public class Events implements Initializable {
 
     @FXML
     private void handleRegister(ActionEvent event) throws SQLException {
+        String EventID = "[0-9]*";
+        int eventid = 0;
         String personID = db.getSecurityNbr(user);
         volunteer.setSecurityNbr(personID);
-        int eventid = Integer.parseInt(enterID.getText());
 
-        event1.setEventID(eventid);
-        event1.setEventDate(java.sql.Date.valueOf(db.getEventDate(eventid)));
-        db.registerToAnEvent(personID,eventid,event1,volunteer);
+        if(enterID.getText().matches(EventID)) {
+            eventid = Integer.parseInt(enterID.getText());
+
+            event1.setEventID(eventid);
+            event1.setEventDate(java.sql.Date.valueOf(db.getEventDate(eventid)));
+            db.registerToAnEvent(personID, eventid, event1, volunteer);
+        }else {alertBox();}
 
     }
     @FXML
     private void handleGoBack(ActionEvent event) throws IOException {
 
         cs.sceneHandler("../View/UserMenu.fxml",event);
+
+    }
+
+    private void alertBox(){
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText("Input invalid");
+        errorAlert.setContentText("Event ID must be integer.");
+        errorAlert.showAndWait();
+        System.out.println("Failed");
 
     }
 
