@@ -36,7 +36,7 @@ public class Donate {
     private Donation donation = new Donation();
     private Volunteer volunteer = new Volunteer();
     private DatabaseConnection db = new DatabaseConnection();
-    private String user = SignIn.getCurrentUser();
+    private String user = DefaultPage.getCurrentUser();
 
     @FXML
     void handleDonate(ActionEvent event) throws SQLException {

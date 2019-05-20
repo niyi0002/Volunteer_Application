@@ -24,7 +24,7 @@ public class EditProfile implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
-    String username = SignIn.getCurrentUser();
+    String username = DefaultPage.getCurrentUser();
     DatabaseConnection databaseConnection = new DatabaseConnection();
     ChangeScene cs = new ChangeScene();
 
@@ -60,18 +60,18 @@ public class EditProfile implements Initializable {
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Volunteer volunteer = new Volunteer();
-        String user = SignIn.getCurrentUser();
+        String user = DefaultPage.getCurrentUser();
 
 
         if (!firstNameField.getText().equals(databaseConnection.getFirstName(user)) || firstNameField.getText().matches(NAME)) {
             volunteer.setFirstname(firstNameField.getText());
             databaseConnection.updateFirstName(user, volunteer);
-        } else {alertBox1();}
+        }
 
         if (!lastNameField.getText().equals(databaseConnection.getLastName(user)) || lastNameField.getText().matches(NAME)) {
             volunteer.setLastname(lastNameField.getText());
             databaseConnection.updateLastName(user, volunteer);
-        } else {alertBox1();}
+        }
 
         if (!addressField.getText().equals(databaseConnection.getPhoneNbr(user))) {
             volunteer.setAddress(addressField.getText());
@@ -81,28 +81,11 @@ public class EditProfile implements Initializable {
         if (!phoneNbrField.getText().equals(databaseConnection.getPhoneNbr(user)) || phoneNbrField.getText().matches(PHONE)) {
             volunteer.setPhoneNbr(phoneNbrField.getText());
             databaseConnection.updatePhoneNbr(user, volunteer);
-        }else{alertBox2();}
+        }
 
     }
 
-    private void alertBox1() {
-        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setHeaderText("Input invalid");
-        errorAlert.setContentText("Changes must be done and "+
-                                   "\nFirst name/last name can not contain digits.");
-        errorAlert.showAndWait();
-        System.out.println("Failed");
 
-    }
-
-    private void alertBox2() {
-        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setHeaderText("Input invalid");
-        errorAlert.setContentText("Phone number must only contain 10 digits.");
-        errorAlert.showAndWait();
-        System.out.println("Failed");
-
-    }
 
 
     @Override

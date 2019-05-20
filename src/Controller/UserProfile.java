@@ -61,7 +61,7 @@ public class UserProfile implements Initializable {
     @FXML
     private TextField txtSsn;   //Done
 
-    String user=SignIn.getCurrentUser();
+    String user=DefaultPage.getCurrentUser();
 
     @FXML
     void editProfile(ActionEvent event) {

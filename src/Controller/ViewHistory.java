@@ -50,7 +50,7 @@ public class ViewHistory implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         DatabaseConnection db = new DatabaseConnection();
-        String user = SignIn.getCurrentUser();
+        String user = DefaultPage.getCurrentUser();
         String personID = null;
         try {
             personID = db.getSecurityNbr(user);

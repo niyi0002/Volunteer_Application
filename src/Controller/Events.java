@@ -67,7 +67,7 @@ public class Events implements Initializable {
     private ObservableList<Event> eventObservableList = db.eventInformation();
     private Volunteer volunteer = new Volunteer();
     private Event  event1 = new Event();
-    private String user = SignIn.getCurrentUser();
+    private String user = DefaultPage.getCurrentUser();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
