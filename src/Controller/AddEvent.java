@@ -7,7 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.ChangeScene;
 import sample.DatabaseConnection;
+
+import java.io.IOException;
 
 public class AddEvent { @FXML
 private Label timeLabel;
@@ -59,7 +62,7 @@ private Label timeLabel;
 
     @FXML
     private Button addEvent;
-
+    private ChangeScene cs = new ChangeScene();
 
 
     @FXML private void handleAddEvent(ActionEvent event){
@@ -75,5 +78,9 @@ private Label timeLabel;
         event1.setCountry(country.getText());
         event1.setCity(city.getText());
         app.insertEvent(event1);
+    }
+
+    public void handleGoBack(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/AdminMenu",event);
     }
 }

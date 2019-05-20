@@ -88,7 +88,8 @@ public class EditProfile implements Initializable {
     private void alertBox1() {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setHeaderText("Input invalid");
-        errorAlert.setContentText("Changes must be done and first name/last name can not contain digits.");
+        errorAlert.setContentText("Changes must be done and "+
+                                   "\nFirst name/last name can not contain digits.");
         errorAlert.showAndWait();
         System.out.println("Failed");
 

@@ -146,6 +146,10 @@ public class Events implements Initializable {
 
             event1.setEventID(eventid);
             event1.setEventDate(java.sql.Date.valueOf(db.getEventDate(eventid)));
+            event1.setEventTime(db.getEventTime(eventid));
+            event1.setEventName(db.getEventName(eventid));
+            event1.setCountry(db.getEventCountry(eventid));
+            event1.setCity(db.getEventCity(eventid));
             db.registerToAnEvent(personID, eventid, event1, volunteer);
         }else {alertBox();}
 
