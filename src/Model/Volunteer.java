@@ -1,5 +1,6 @@
 package Model;
 
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -37,6 +38,12 @@ public class Volunteer extends User {
     }
     public StringProperty addressProperty() {
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return  " ID : "+getSecurtyNbr()+ "\n Firstname : " +getFirstname()+ "\n Lastname : "+getLastname()+ "\n Username : " +getUsername()+ "\n Email : " +getEmail()+ "\n Birthday : " +getBirthday()+
+                "\n Address : " +getAddress()+ "\n Phone Number : " +getPhoneNbr();
     }
 
 }

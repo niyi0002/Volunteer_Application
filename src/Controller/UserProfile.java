@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class UserProfile implements Initializable {
 
-    DatabaseConnection app =new DatabaseConnection();
+    DatabaseConnection app = new DatabaseConnection();
 
     ChangeScene cs= new ChangeScene();
 
@@ -61,7 +61,7 @@ public class UserProfile implements Initializable {
     @FXML
     private TextField txtSsn;   //Done
 
-    String user=SignIn.getCurrentUser();
+    String user=DefaultPage.getCurrentUser();
 
     @FXML
     void editProfile(ActionEvent event) {

@@ -4,10 +4,9 @@ import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
@@ -25,7 +24,7 @@ public class EditProfile implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
-    String username = SignIn.getCurrentUser();
+    String username = DefaultPage.getCurrentUser();
     DatabaseConnection databaseConnection = new DatabaseConnection();
     ChangeScene cs = new ChangeScene();
 
@@ -52,33 +51,41 @@ public class EditProfile implements Initializable {
 
 
     @FXML
-    void handleUpdateButton(ActionEvent event) {
+    void handleUpdateButton(ActionEvent event) throws SQLException {
+
+
+        String SSN = "[0-9]{8}-[0-9]{4}";
+        String NAME = "[a-zA-Z]";
+        String PHONE = "[0-9]{10}";
 
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Volunteer volunteer = new Volunteer();
-        String user = SignIn.getCurrentUser();
+        String user = DefaultPage.getCurrentUser();
 
-        if (!firstNameField.getText().equals("")) {
+
+        if (!firstNameField.getText().equals(databaseConnection.getFirstName(user)) || firstNameField.getText().matches(NAME)) {
             volunteer.setFirstname(firstNameField.getText());
             databaseConnection.updateFirstName(user, volunteer);
         }
 
-        if (!lastNameField.getText().equals("")) {
+        if (!lastNameField.getText().equals(databaseConnection.getLastName(user)) || lastNameField.getText().matches(NAME)) {
             volunteer.setLastname(lastNameField.getText());
             databaseConnection.updateLastName(user, volunteer);
         }
 
-        if (!addressField.getText().equals("")) {
+        if (!addressField.getText().equals(databaseConnection.getPhoneNbr(user))) {
             volunteer.setAddress(addressField.getText());
             databaseConnection.updateAddress(user, volunteer);
         }
 
-        if (!phoneNbrField.getText().equals("")) {
+        if (!phoneNbrField.getText().equals(databaseConnection.getPhoneNbr(user)) || phoneNbrField.getText().matches(PHONE)) {
             volunteer.setPhoneNbr(phoneNbrField.getText());
             databaseConnection.updatePhoneNbr(user, volunteer);
         }
 
     }
+
+
 
 
     @Override

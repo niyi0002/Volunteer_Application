@@ -28,5 +28,9 @@
                 <Font name="Times New Roman" size="14.0" />
             </font>
         </Button>
+      <Button fx:id="goBack" layoutX="466.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go Back">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></Button>
     </children>
 </AnchorPane>

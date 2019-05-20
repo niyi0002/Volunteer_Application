@@ -1,22 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DefaultPage">
+<AnchorPane id="pane" fx:id="anchor" opacity="0.8" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DefaultPage">
    <children>
-      <Button fx:id="signinButton" layoutX="284.0" layoutY="125.0" mnemonicParsing="false" onAction="#signIn" prefHeight="44.0" prefWidth="90.0" text="Sign in">
+      <Hyperlink fx:id="signUp" layoutX="489.0" layoutY="359.0" onAction="#handleSignUp" prefHeight="42.0" prefWidth="223.0" text="Don't have an account? REGISTER HERE" />
+      <GridPane fx:id="gridPane" layoutX="347.0" layoutY="168.0" prefHeight="191.0" prefWidth="477.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="144.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="164.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField fx:id="handleUsername" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="handlePassword" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="signIn" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="42.0" prefWidth="202.0" text="Sign In" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Times New Roman Bold" size="18.0" />
+               </font>
+            </Button>
+            <Label text="Username :" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </Label>
+            <Label text="Password :" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Times New Roman" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Button fx:id="aboutUs" layoutX="914.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleAboutUs" prefHeight="36.0" prefWidth="45.0" text="?">
          <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="SignupButton" layoutX="284.0" layoutY="197.0" mnemonicParsing="false" onAction="#signUp" prefHeight="44.0" prefWidth="90.0" text="Sign up">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="infoButton" layoutX="284.0" layoutY="267.0" mnemonicParsing="false" onAction="#aboutUs" prefHeight="44.0" prefWidth="90.0" text="About us">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font></Button>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <stylesheets>
+      <URL value="@design.css" />
+   </stylesheets>
 </AnchorPane>

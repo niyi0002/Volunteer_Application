@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sample.DatabaseConnection;
 
@@ -48,7 +45,7 @@ public class SignUp {
     @FXML
     private TextField emailText ;
     @FXML
-    private TextField birthdayText ;
+    private DatePicker datePicker;
     @FXML
     private TextField phoneNbrText ;
     @FXML
@@ -57,25 +54,33 @@ public class SignUp {
     private Button register ;
     @FXML
     private Button returnButton ;
-
+    Volunteer volunteer = new Volunteer();
     Stage dialogStage = new Stage();
     Scene scene;
 
     @FXML private void handleRegister(ActionEvent event){
         DatabaseConnection db = new DatabaseConnection();
-     //   java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(birthday.getValue());
+      java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(datePicker.getValue());
         // insert three new rows
+        String SSN = "[0-9]{8}-[0-9]{4}";
+        String NAME = "[a-zA-Z]";
+        String PHONE = "[0-9]{10}";
+        if (ssnText.getText().matches(SSN)){
+            volunteer.setSecurityNbr(ssnText.getText());
+        }else {alertBox();}
 
-        Volunteer volunteer = new Volunteer();
-        volunteer.setSecurityNbr(ssnText.getText());
         volunteer.setUsername(usernameText.getText());
         volunteer.setPassword(passwordField.getText());
-        volunteer.setFirstname(firstNameText.getText());
-        volunteer.setLastname(lastNameText.getText());
+        if (firstNameText.getText().matches(NAME) && lastNameText.getText().matches(NAME)) {
+            volunteer.setFirstname(firstNameText.getText());
+            volunteer.setLastname(lastNameText.getText());
+        }else {alertBox();}
         volunteer.setEmail(emailText.getText());
         volunteer.setAddress(addressText.getText());
-        volunteer.setPhoneNbr(phoneNbrText.getText());
-        volunteer.setBirthday(Date.valueOf(birthdayText.getText()));
+        if (phoneNbrText.getText().matches(PHONE)) {
+            volunteer.setPhoneNbr(phoneNbrText.getText());
+        }else {alertBox();}
+        volunteer.setBirthday(gettedDatePickerDate);
         volunteer.setRole("volunteer");
         db.insert(volunteer);
 
@@ -96,4 +101,12 @@ public class SignUp {
         }
     }
 
+    private   void alertBox(){
+
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText("Input invalid");
+        errorAlert.setContentText("Username or password is incorrect");
+        errorAlert.showAndWait();
+        System.out.println("Failed");
+    }
 }

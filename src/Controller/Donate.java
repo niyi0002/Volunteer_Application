@@ -4,6 +4,7 @@ import Model.Donation;
 import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,24 +32,26 @@ public class Donate {
     @FXML
     private Button goBack;
 
-    ChangeScene cs = new ChangeScene();
-
+    private ChangeScene cs = new ChangeScene();
+    private Donation donation = new Donation();
+    private Volunteer volunteer = new Volunteer();
+    private DatabaseConnection db = new DatabaseConnection();
+    private String user = DefaultPage.getCurrentUser();
 
     @FXML
     void handleDonate(ActionEvent event) throws SQLException {
-
+        String AMOUNT = "[0-9]*";
         LocalDate date = LocalDate.now();
-        Donation donation = new Donation();
-        Volunteer volunteer = new Volunteer();
-        DatabaseConnection db = new DatabaseConnection();
-        String user = SignIn.getCurrentUser();
         String volunteerID = db.getSecurityNbr(user);
-        volunteer.setSecurityNbr(volunteerID);
-
-        donation.setDonation(amount.getText());
-        donation.setDonationDate(Date.valueOf(date));
-        db.insertDonation( donation, volunteer);
-
+        if (amount.getText().matches(AMOUNT)) {
+            volunteer.setSecurityNbr(volunteerID);
+            donation.setDonation(amount.getText());
+            donation.setDonationDate(Date.valueOf(date));
+            db.insertDonation(donation, volunteer);
+        }
+        else {
+            alertBox();
+        }
 
 
     }
@@ -56,5 +59,13 @@ public class Donate {
     @FXML
     void handleGoBack(ActionEvent event) throws IOException {
         cs.sceneHandler("../View/UserMenu.fxml",event);
+    }
+
+    private void alertBox(){
+
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText("Invalid input");
+        errorAlert.setContentText("Amount must be integer!");
+        errorAlert.showAndWait();
     }
 }

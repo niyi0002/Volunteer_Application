@@ -26,6 +26,36 @@ public class DatabaseConnection {
         }
     }
 
+    public ObservableList<User_Has_Events> historyInformation(String UserID) {
+        LocalDate date = LocalDate.now();
+        ObservableList<User_Has_Events> historyList = FXCollections.observableArrayList();
+        String query = "select * from volunteer_has_events where securityNbr = '"+UserID+"' and history >= '"+date+"'";
+
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                User_Has_Events userHasEvents = new User_Has_Events();
+                userHasEvents.setEventID(resultSet.getInt(1));
+                userHasEvents.setIdinformation(resultSet.getString(2));
+                userHasEvents.setHistory(resultSet.getDate(3));
+                userHasEvents.setEventTime(resultSet.getString(4));
+                userHasEvents.setEventName(resultSet.getString(5));
+                userHasEvents.setCountry(resultSet.getString(6));
+                userHasEvents.setCity(resultSet.getString(7));
+                historyList.add(userHasEvents);
+
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return historyList;
+
+
+    }
+
     public void insert(Volunteer volunteer) {
         String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
@@ -332,5 +362,263 @@ public class DatabaseConnection {
 
         return donationHistory;
     }
+    public void registerToAnEvent(String userid , int eventid , Event event , Volunteer volunteer){
+
+        String sql = ""+"INSERT INTO volunteer_has_events(eventID,securityNbr,history,eventTime,eventName,country,city) VALUES(?,?,?,?,?,?,?)";
+
+
+        try (Connection conn = this.dbConnect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, event.getEventID());
+            pstmt.setString(2, volunteer.getSecurtyNbr());
+            pstmt.setDate(3, Date.valueOf(event.getEventDate()));
+            pstmt.setString(4,event.getEventTime());
+            pstmt.setString(5,event.getEventName());
+            pstmt.setString(6,event.getCountry());
+            pstmt.setString(7,event.getCity());
+
+            pstmt.executeUpdate();
+            System.out.println("Volunteer has registered to an event!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public String getEventDate(int eventid) throws SQLException {
+        String date = null;
+
+        String query = "select eventDate from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                date = resultSet.getString(1);
+            }
+        }
+        return date ;
+    }
+    public String getEventTime(int eventid) throws SQLException {
+        String time = null;
+
+        String query = "select eventTime from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                time = resultSet.getString(1);
+            }
+        }
+        return time ;
+    }
+    public String getEventName(int eventid) throws SQLException {
+        String name = null;
+
+        String query = "select eventName from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                name = resultSet.getString(1);
+            }
+        }
+        return name ;
+    }
+    public String getEventCountry(int eventid) throws SQLException {
+        String country = null;
+
+        String query = "select country from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                country = resultSet.getString(1);
+            }
+        }
+        return country ;
+    }
+    public String getEventCity(int eventid) throws SQLException {
+        String city = null;
+
+        String query = "select city from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                city = resultSet.getString(1);
+            }
+        }
+        return city ;
+    }
+    public ObservableList<Event> eventInformation(){
+        ObservableList<Event>eventList= FXCollections.observableArrayList();
+        String query = "select * from events ";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Event event = new Event();
+                event.setEventID(resultSet.getInt(1));
+                event.setEventName(resultSet.getString(2));
+                event.setEventDate(resultSet.getDate(3));
+                event.setEventTime(resultSet.getString(4));
+                event.setEventInfo(resultSet.getString(5));
+                event.setEventOrganizer(resultSet.getString(6));
+                event.setCountry(resultSet.getString(7));
+                event.setCity(resultSet.getString(8));
+                eventList.add(event);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
+
+    public ObservableList<Volunteer> volunteerInfo(){
+        String roles = "volunteer";
+        ObservableList<Volunteer>eventList= FXCollections.observableArrayList();
+
+        String query = "select firstName,lastName,securityNbr,userName,role,email,birthday,address,phoneNbr from volunteers where role = '"+roles+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                Volunteer volunteer = new Volunteer();
+                volunteer.setFirstname(resultSet.getString(1));
+                volunteer.setLastname(resultSet.getString(2));
+                volunteer.setSecurityNbr(resultSet.getString(3));
+                volunteer.setUsername(resultSet.getString(4));
+                volunteer.setRole(resultSet.getString(5));
+                volunteer.setEmail(resultSet.getString(6));
+                volunteer.setBirthday(Date.valueOf(resultSet.getString(7)));
+                volunteer.setAddress(resultSet.getString(8));
+                volunteer.setPhoneNbr(resultSet.getString(9));
+                eventList.add(volunteer);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventList;
+    }
+
+    public void updateEventName(String newEventName , int eventId)  {
+
+        String sql = "update event set eventName = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newEventName);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event name updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventDate(Date newDate , int eventId)  {
+
+        String sql = "update event set eventDate = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setDate   (1, newDate);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event date updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventTime(String newTime , int eventId)  {
+
+        String sql = "update event set eventTime = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newTime);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event time updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventInfo(String newInfo , int eventId)  {
+
+        String sql = "update event set eventInfo = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newInfo);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event info updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateEventOrganizer(String newOrganizer , int eventId)  {
+
+        String sql = "update event set eventOrganizer = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newOrganizer);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event organizer updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateCountry(String newCountry , int eventId)  {
+
+        String sql = "update event set country = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newCountry);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event country updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void updateCity(String newCity , int eventId)  {
+
+        String sql = "update event set city = ?  where eventID = ?  ";
+        Event event = new Event();
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString   (1, newCity);
+            preparedStmt.setInt(2, eventId);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Event city updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
 
 }

@@ -14,8 +14,9 @@
                 <Font name="Times New Roman" size="50.0" />
             </font>
         </Text>
-        <Button fx:id="signOutButton" layoutX="249.0" layoutY="264.0" mnemonicParsing="false" onAction="#handleSignOutButton" prefHeight="26.0" prefWidth="112.0" text="Sign out" />
+        <Button fx:id="signOutButton" layoutX="249.0" layoutY="311.0" mnemonicParsing="false" onAction="#handleSignOutButton" prefHeight="26.0" prefWidth="112.0" text="Sign out" />
         <Button fx:id="viewEventsButton" layoutX="249.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleViewEvents" prefHeight="26.0" prefWidth="112.0" text="View events" />
+      <Button fx:id="sendEmail" layoutX="249.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleSendEmail" prefHeight="26.0" prefWidth="112.0" text="Send email" />
     </children>
 
 </AnchorPane>
