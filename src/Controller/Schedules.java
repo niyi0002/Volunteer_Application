@@ -64,11 +64,6 @@ public class Schedules implements Initializable{
     }
 
 
-
-
-
-
-
     @FXML
     private void handleReturnButton (ActionEvent event) throws IOException {
 

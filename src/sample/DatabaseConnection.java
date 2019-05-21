@@ -56,6 +56,22 @@ public class DatabaseConnection {
 
     }
 
+    public  void deleteVolunteer(String username) {
+
+        String query = "DELETE FROM volunteer_application.volunteers WHERE username = '?';";
+        try {Connection conn = this.dbConnect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, username);
+            pstmt.executeUpdate();
+
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     public void insert(Volunteer volunteer) {
         String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
