@@ -8,10 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Schedules implements Initializable{
@@ -41,7 +42,7 @@ public class Schedules implements Initializable{
     private ChangeScene cs = new ChangeScene();
     private Event  event1 = new Event();
     private String user = DefaultPage.getCurrentUser();
-
+    private User_Has_Events userHasEvents = new User_Has_Events();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,6 +73,15 @@ public class Schedules implements Initializable{
     }
 
 
+    public void popUpBox(User_Has_Events userHasEvents) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Volunteer Information");
+        alert.setHeaderText(String.valueOf(userHasEvents));
+        alert.setContentText("Choose your option.");
 
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+
+    }
 
 }

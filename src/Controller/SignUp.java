@@ -63,7 +63,7 @@ public class SignUp {
       java.sql.Date gettedDatePickerDate = java.sql.Date.valueOf(datePicker.getValue());
         // insert three new rows
         String SSN = "[0-9]{8}-[0-9]{4}";
-        String NAME = "[a-zA-Z]";
+        String NAME = "[a-zA-Z]*";
         String PHONE = "[0-9]{10}";
         if (ssnText.getText().matches(SSN)){
             volunteer.setSecurityNbr(ssnText.getText());

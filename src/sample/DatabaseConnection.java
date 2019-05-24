@@ -36,13 +36,14 @@ public class DatabaseConnection {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 User_Has_Events userHasEvents = new User_Has_Events();
-                userHasEvents.setEventID(resultSet.getInt(1));
-                userHasEvents.setIdinformation(resultSet.getString(2));
-                userHasEvents.setHistory(resultSet.getDate(3));
-                userHasEvents.setEventTime(resultSet.getString(4));
-                userHasEvents.setEventName(resultSet.getString(5));
-                userHasEvents.setCountry(resultSet.getString(6));
-                userHasEvents.setCity(resultSet.getString(7));
+                userHasEvents.setID(resultSet.getInt(1));
+                userHasEvents.setEventID(resultSet.getInt(2));
+                userHasEvents.setIdinformation(resultSet.getString(3));
+                userHasEvents.setHistory(resultSet.getDate(4));
+                userHasEvents.setEventTime(resultSet.getString(5));
+                userHasEvents.setEventName(resultSet.getString(6));
+                userHasEvents.setCountry(resultSet.getString(7));
+                userHasEvents.setCity(resultSet.getString(8));
                 historyList.add(userHasEvents);
 
 
@@ -58,7 +59,7 @@ public class DatabaseConnection {
 
     public  void deleteVolunteer(String username) {
 
-        String query = "DELETE FROM volunteer_application.volunteers WHERE username = '?';";
+        String query = "DELETE FROM volunteers WHERE userName = ?;";
         try {Connection conn = this.dbConnect();
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, username);
@@ -70,7 +71,20 @@ public class DatabaseConnection {
         }
 
     }
+    public  void deleteEvent(int eventID) {
 
+        String query = "DELETE FROM events WHERE eventID = ?;";
+        try {Connection conn = this.dbConnect();
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, eventID);
+            pstmt.executeUpdate();
+
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void insert(Volunteer volunteer) {
         String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
@@ -335,14 +349,14 @@ public class DatabaseConnection {
 
         LocalDate date = LocalDate.now();
         ObservableList<User_Has_Events>eventHistory= FXCollections.observableArrayList();
-        String query = "select eventID , history from volunteer_has_events where securityNbr = '" +userID+"' and history < '"+date+"'" ;
+        String query = "select eventName , history from volunteer_has_events where securityNbr = '" +userID+"' and history < '"+date+"'" ;
 
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()){
                 User_Has_Events history = new User_Has_Events();
-                history.setEventID(resultSet.getInt(1));
+                history.setEventName(resultSet.getString(1));
                 history.setHistory(resultSet.getDate(2));
 
                 eventHistory.add(history);
@@ -522,7 +536,7 @@ public class DatabaseConnection {
 
     public void updateEventName(String newEventName , int eventId)  {
 
-        String sql = "update event set eventName = ?  where eventID = ?  ";
+        String sql = "update events set eventName = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -538,7 +552,7 @@ public class DatabaseConnection {
     }
     public void updateEventDate(Date newDate , int eventId)  {
 
-        String sql = "update event set eventDate = ?  where eventID = ?  ";
+        String sql = "update events set eventDate = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -554,7 +568,7 @@ public class DatabaseConnection {
     }
     public void updateEventTime(String newTime , int eventId)  {
 
-        String sql = "update event set eventTime = ?  where eventID = ?  ";
+        String sql = "update events set eventTime = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -570,7 +584,7 @@ public class DatabaseConnection {
     }
     public void updateEventInfo(String newInfo , int eventId)  {
 
-        String sql = "update event set eventInfo = ?  where eventID = ?  ";
+        String sql = "update events set eventInfo = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -586,7 +600,7 @@ public class DatabaseConnection {
     }
     public void updateEventOrganizer(String newOrganizer , int eventId)  {
 
-        String sql = "update event set eventOrganizer = ?  where eventID = ?  ";
+        String sql = "update events set eventOrganizer = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -603,7 +617,7 @@ public class DatabaseConnection {
 
     public void updateCountry(String newCountry , int eventId)  {
 
-        String sql = "update event set country = ?  where eventID = ?  ";
+        String sql = "update events set country = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {
@@ -619,7 +633,7 @@ public class DatabaseConnection {
     }
     public void updateCity(String newCity , int eventId)  {
 
-        String sql = "update event set city = ?  where eventID = ?  ";
+        String sql = "update events set city = ?  where eventID = ?  ";
         Event event = new Event();
         try (Connection con = this.dbConnect();
              PreparedStatement preparedStmt = con.prepareStatement(sql)) {

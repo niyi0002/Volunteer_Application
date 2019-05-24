@@ -7,9 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -47,6 +51,8 @@ public class EditProfile implements Initializable {
 
     @FXML
     private TextField firstNameField;
+    @FXML
+    private ImageView pp;
 
 
 
@@ -93,23 +99,19 @@ public class EditProfile implements Initializable {
 
         try {
             firstNameField.setText(databaseConnection.getFirstName(username));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
             lastNameField.setText(databaseConnection.getLastName(username));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try {
             addressField.setText(databaseConnection.getAddress(username));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
             phoneNbrField.setText(databaseConnection.getPhoneNbr(username));
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            Image image = new Image(new FileInputStream("src/icons/users-17.png"));
+            pp.setImage(image);
+            pp.setFitWidth(250);
+            pp.setFitHeight(250);
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

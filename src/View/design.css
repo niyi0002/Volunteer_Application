@@ -2,32 +2,34 @@
 {
 
     -fx-background-color:
-            linear-gradient(burlywood,#07b55b),
-            linear-gradient(burlywood,#4cdda6),
-            linear-gradient(#4cdda6, #07b55b),
-            linear-gradient(#4cdda6, #4cdda6 50%, #07b55b 100%),
-            linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 30;
-    -fx-background-insets: 0,1,2,3,0;
-    -fx-text-fill: white;
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
     -fx-font-weight: normal;
     -fx-font-family: "Times New Roman";
     -fx-font-size: 18px;
-    -fx-padding: 10 20 10 20;
-    -fx-border-color: #03cca4 ;
+    -fx-padding: 5 20 5 20;
+    -fx-border-color: lightgray ;
     -fx-border-width:1;
-    -fx-border-radius: 30;
+    -fx-border-radius: 20;
     -fx-alignment: center ;
     -fx-opacity: 0.9 ;
+    -fx-pref-height: 30;
+    -fx-pref-width: 320;
 }
 
-#anchor{
-    -fx-background-image: url("../icons/volunteer1-png.png");
+#pane{
+    -fx-background-color:  linear-gradient(violet, bisque);
     -fx-background-repeat: stretch;
     -fx-background-size: 1100, 703;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
     -fx-opacity: 0.9;
+    -fx-padding: 5 20 5 20;
 }
 #gridPane{
     -fx-background-color:  linear-gradient(lightsteelblue, cornflowerblue);
@@ -36,9 +38,115 @@
     -fx-padding: 10 10 10 10;
     -fx-background-radius: 20;
     -fx-opacity: 0.9;
+    -fx-background-color:rgba(161,92,218,0.5);
+
 }
 .hyperlink{
     -fx-border-color: transparent;
     -fx-padding: 4 0 4 0;
     -fx-text-fill: darkslateblue;
+}
+.label{
+    -fx-padding: 0 5 0 5;
+}
+#username
+{-fx-padding: 0 0 0 50;}
+#pass1{
+    -fx-padding: 0 0 0 50;
+}
+#aboutUs{
+
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+    -fx-font-weight: normal;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 18px;
+    -fx-padding: 5 20 5 20;
+    -fx-border-color: lightgray ;
+    -fx-border-width:1;
+    -fx-border-radius: 30;
+    -fx-alignment: center ;
+    -fx-opacity: 0.9 ;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 40px;
+}
+#goBack{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+    -fx-font-weight: normal;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 18px;
+    -fx-padding: 5 20 5 20;
+    -fx-border-color: lightgray ;
+    -fx-border-width:1;
+    -fx-border-radius: 20;
+    -fx-alignment: center ;
+    -fx-opacity: 0.9 ;
+    -fx-pref-height: 30;
+    -fx-pref-width: 180;
+}
+.date-picker-popup > .month-year-pane > .spinner > .left-button {
+    -fx-padding: 4 6;
+    -fx-background-color: beige;
+    -fx-pref-height: 30;
+    -fx-pref-width: 30;
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .right-button {
+    -fx-padding: 4 6;
+    -fx-background-color: beige;
+    -fx-pref-height: 30;
+    -fx-pref-width: 30;
+
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button > .left-arrow {
+    -fx-background-color: violet;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333em 0.167em 0.333em 0.167em;
+    -fx-shape: "M5.997,5.072L5.995,6.501l-2.998-4l2.998-4l0.002,1.43l-1.976,2.57L5.997,5.072z";
+    -fx-scale-shape: true;
+
+}
+
+.date-picker-popup > .month-year-pane > .spinner > .button > .right-arrow {
+    -fx-background-color: violet;
+    -fx-background-insets: 0;
+    -fx-padding: 0.333em 0.167em 0.333em 0.167em;
+    -fx-shape: "M2.998-0.07L3-1.499l2.998,4L3,6.501l-0.002-1.43l1.976-2.57L2.998-0.07z";
+    -fx-scale-shape: true;
+
+}
+#buttonSend{
+    -fx-background-color:
+            #c3c4c4,
+            linear-gradient(#d6d6d6 50%, white 100%),
+            radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
+    -fx-background-radius: 20;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+    -fx-font-weight: normal;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 18px;
+    -fx-padding: 5 20 5 20;
+    -fx-border-color: lightgray ;
+    -fx-border-width:1;
+    -fx-border-radius: 20;
+    -fx-alignment: center ;
+    -fx-opacity: 0.9 ;
+    -fx-pref-height: 70;
+    -fx-pref-width: 120;
 }

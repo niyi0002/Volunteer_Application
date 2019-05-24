@@ -8,6 +8,7 @@ import javafx.beans.property.StringProperty;
 import java.sql.Date;
 
 public class User_Has_Events {
+    private IntegerProperty ID = new SimpleIntegerProperty(this, "ID");
     private IntegerProperty eventID = new SimpleIntegerProperty(this, "eventID");
     private StringProperty idinformation = new SimpleStringProperty(this, "userID");
     private StringProperty history = new SimpleStringProperty(this, "history");
@@ -22,7 +23,7 @@ public class User_Has_Events {
 
 
 
-    public User_Has_Events(IntegerProperty eventID ,StringProperty idinformation ,StringProperty history, StringProperty country, StringProperty city, StringProperty eventTime, StringProperty eventName){
+    public User_Has_Events(IntegerProperty ID,IntegerProperty eventID ,StringProperty idinformation ,StringProperty history, StringProperty country, StringProperty city, StringProperty eventTime, StringProperty eventName){
         this.eventID = eventID;
         this.idinformation = idinformation;
         this.history = history;
@@ -30,7 +31,7 @@ public class User_Has_Events {
         this.city = city;
         this.eventName = eventName;
         this.eventTime = eventTime;
-
+        this.ID = ID;
     }
     public User_Has_Events(){}
 
@@ -88,6 +89,13 @@ public class User_Has_Events {
         this.city.set(city);
     }
 
+    public void setID(int ID) {
+        this.ID.set(ID);
+    }
+
+    public int getID() {
+        return ID.get();
+    }
 
     public String getCountry(){
         return country.get();
@@ -119,6 +127,10 @@ public class User_Has_Events {
 
     public StringProperty eventTimeProperty() {
         return eventTime;
+    }
+
+    public IntegerProperty IDProperty() {
+        return ID;
     }
 }
 

@@ -9,10 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -60,6 +64,8 @@ public class UserProfile implements Initializable {
     private TextField txtEmail; //Done
     @FXML
     private TextField txtSsn;   //Done
+    @FXML
+    private ImageView pp;
 
     String user=DefaultPage.getCurrentUser();
 
@@ -92,6 +98,16 @@ public class UserProfile implements Initializable {
             txtSsn.setText(app.getSecurityNbr(user));
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Image image = new Image(new FileInputStream("src/icons/users-17.png"));
+            pp.setImage(image);
+            pp.setFitWidth(250);
+            pp.setFitHeight(250);
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 

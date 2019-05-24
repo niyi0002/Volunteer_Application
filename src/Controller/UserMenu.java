@@ -2,16 +2,19 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import sample.ChangeScene;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UserMenu {
+public class UserMenu implements Initializable {
     @FXML
     private Button userProfile;
 
@@ -26,6 +29,9 @@ public class UserMenu {
 
     @FXML
     private Button signOut;
+
+    @FXML
+    private ImageView menu;
 
     ChangeScene cs = new ChangeScene();
 
@@ -56,5 +62,19 @@ public class UserMenu {
     @FXML
     void handleSignOut(ActionEvent event) throws IOException {
         cs.sceneHandler("../View/DefaultPage.fxml",event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            Image image = new Image(new FileInputStream("src/icons/vol-hand.png"));
+            menu.setImage(image);
+            menu.setFitWidth(250);
+            menu.setFitHeight(250);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

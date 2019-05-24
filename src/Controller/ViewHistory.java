@@ -25,7 +25,7 @@ public class ViewHistory implements Initializable {
     private TableView<User_Has_Events> history;
 
     @FXML
-    private TableColumn<User_Has_Events, Integer> attenedEvents;
+    private TableColumn<User_Has_Events, String> attenedEvents;
 
     @FXML
     private TableColumn<User_Has_Events, Date> date;
@@ -62,7 +62,7 @@ public class ViewHistory implements Initializable {
         ObservableList<User_Has_Events> eventObservableList = db.historyInfo(personID);
         ObservableList<Donation> eventObservableList2 = db.donationInfo(personID);
 
-        this.attenedEvents.setCellValueFactory(new PropertyValueFactory("eventID"));
+        this.attenedEvents.setCellValueFactory(new PropertyValueFactory("eventName"));
         this.date.setCellValueFactory(new PropertyValueFactory("history"));
         this.donateAmount.setCellValueFactory(new PropertyValueFactory("donation"));
         this.donatedDate.setCellValueFactory(new PropertyValueFactory("donationDate"));
