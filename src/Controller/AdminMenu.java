@@ -323,14 +323,6 @@ public class AdminMenu implements Initializable {
             }
         });
 
-        table.setOnMouseClicked((MouseEvent event) -> {
-            if (event.getButton().equals(MouseButton.PRIMARY)) {
-                int index = table.getSelectionModel().getSelectedIndex();
-                event1 = table.getItems().get(index);
-                popUpBoxEvent(event1);
-            }
-
-        });
 
 
         ////////////////// view volunteer
@@ -374,27 +366,8 @@ public class AdminMenu implements Initializable {
             // ... user chose CANCEL or closed the dialog
         }
     }
-    public void popUpBoxEvent(Event event1) {
-        table.refresh();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Event Information");
-        alert.setHeaderText("Do you wanna delete this event " +event1.getEventName());
-        alert.setContentText("Choose your option.");
 
-        ButtonType buttonTypeOne = new ButtonType("Delete");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeOne) {
-            // ... user chose "One"
-            db.deleteEvent(event1.getEventID());
-            table.refresh();
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
-    }
 
     public void editEvent() {
         eventName1.setCellFactory(TextFieldTableCell.forTableColumn());
