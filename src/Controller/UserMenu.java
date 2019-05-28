@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import sample.ChangeScene;
 import sample.DatabaseConnection;
 
@@ -65,6 +66,9 @@ public class UserMenu implements Initializable {
 
     @FXML
     private Button returnButton;
+
+    @FXML
+    private AnchorPane emailButton;
 
     ChangeScene cs = new ChangeScene();
     DatabaseConnection app = new DatabaseConnection();
@@ -129,6 +133,11 @@ public class UserMenu implements Initializable {
     @FXML
     void handleDonate(ActionEvent event) throws IOException {
       cs.sceneHandler("../View/Donate.fxml",event);
+    }
+
+    @FXML
+    void email(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/userEmail.fxml",event);
     }
 
     @FXML

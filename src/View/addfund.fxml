@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddFunds">
    <children>
-      <Button fx:id="hundra" layoutX="300.0" layoutY="96.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="79.0" text="100 kr" />
-      <Button fx:id="trehundra" layoutX="300.0" layoutY="148.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="79.0" text="300 kr" />
-      <Button fx:id="femhundra" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="79.0" text="500 kr " />
+      <Button fx:id="hundra" layoutX="300.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleAdd100kr" prefHeight="44.0" prefWidth="79.0" text="100 kr" />
+      <Button fx:id="trehundra" layoutX="300.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleAdd300kr" prefHeight="44.0" prefWidth="79.0" text="300 kr" />
+      <Button fx:id="femhundra" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleAdd500kr" prefHeight="44.0" prefWidth="79.0" text="500 kr " />
       <Label layoutX="217.0" layoutY="108.0" text="Add fund:">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
@@ -31,7 +30,7 @@
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="tusen" layoutX="300.0" layoutY="257.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="79.0" text="1000 kr " />
+      <Button fx:id="tusen" layoutX="300.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleAdd1000kr" prefHeight="44.0" prefWidth="79.0" text="1000 kr " />
       <Button fx:id="returnButton" layoutX="54.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleReturnButton" prefHeight="44.0" prefWidth="73.0" text="Return">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
