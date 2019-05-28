@@ -124,6 +124,20 @@ public class DatabaseConnection {
         return SSN;
     }
 
+    public String getBalance(String username) throws SQLException {
+        String balance = null;
+
+        String query = "select balance from volunteers where username = '" + username + "'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                balance = resultSet.getString(1);
+            }
+        }
+        return balance;
+    }
+
     public String getUserName(String username) throws SQLException {
         String userName = null;
 
@@ -275,6 +289,25 @@ public class DatabaseConnection {
 
             preparedStmt.executeUpdate();
             System.out.println("First name updated!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        // execute the java preparedstatement
+    }
+
+    public void updateBalance(String user, Volunteer volunteer) {
+
+        String sql = "update volunteers set balance = ?  where userName = ?  ";
+
+
+        try (Connection con = this.dbConnect();
+             PreparedStatement preparedStmt = con.prepareStatement(sql)) {
+
+            preparedStmt.setString(1, volunteer.getBalance());
+            preparedStmt.setString(2, user);
+
+            preparedStmt.executeUpdate();
+            System.out.println("Balance has been updated!");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

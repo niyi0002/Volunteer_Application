@@ -32,11 +32,15 @@ public class Donate {
     @FXML
     private Button goBack;
 
+    @FXML
+    private TextField balancefield;
+
     private ChangeScene cs = new ChangeScene();
     private Donation donation = new Donation();
     private Volunteer volunteer = new Volunteer();
     private DatabaseConnection db = new DatabaseConnection();
     private String user = DefaultPage.getCurrentUser();
+    DatabaseConnection app = new DatabaseConnection();
 
     @FXML
     void handleDonate(ActionEvent event) throws SQLException {
@@ -54,6 +58,17 @@ public class Donate {
         }
 
 
+    }
+
+    @FXML
+    void userBalance(){
+        String user=DefaultPage.getCurrentUser();
+
+        try {
+            balancefield.setText(app.getBalance(user));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
