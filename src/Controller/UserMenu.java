@@ -70,6 +70,9 @@ public class UserMenu implements Initializable {
     @FXML
     private AnchorPane emailButton;
 
+    @FXML
+    private Button Addfunds;
+
     ChangeScene cs = new ChangeScene();
     DatabaseConnection app = new DatabaseConnection();
 
@@ -167,6 +170,11 @@ public class UserMenu implements Initializable {
     @FXML
     void handleSignOut(ActionEvent event) throws IOException {
         cs.sceneHandler("../View/DefaultPage.fxml",event);
+    }
+
+    @FXML
+    void addFunds(ActionEvent event) throws IOException {
+        cs.sceneHandler("../View/addFund.fxml",event);
     }
 
     @Override
