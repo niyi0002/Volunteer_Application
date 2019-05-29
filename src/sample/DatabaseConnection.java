@@ -18,7 +18,7 @@ public class DatabaseConnection {
     public static Connection dbConnect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/volunteer_application", "root", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/volunteer_application", "root", "12345678Bam!");
             return con;
         } catch (Exception ex) {
             System.out.println("the connection fails " + ex);
@@ -237,7 +237,7 @@ public class DatabaseConnection {
     }
 
     public void insertEvent(Event event) {
-        String sql = "" + "INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "" + "INSERT INTO events(eventID,eventName,eventDate,eventTime,eventInfo,eventOrganizer,country,city,link) VALUES(?,?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
@@ -251,6 +251,8 @@ public class DatabaseConnection {
             pstmt.setString(6, event.getEventOrganizer());
             pstmt.setString(7, event.getCountry());
             pstmt.setString(8, event.getCity());
+
+
             pstmt.executeUpdate();
             System.out.println("Event saved into database!");
         } catch (SQLException e) {
@@ -512,6 +514,19 @@ public class DatabaseConnection {
         }
         return city ;
     }
+    public String getEventLink(int eventid) throws SQLException {
+        String link = null;
+
+        String query = "select link from events where eventID = '" +eventid+"'";
+        try (Connection connection = this.dbConnect();
+             Statement statement = connection.createStatement()){
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                link = resultSet.getString(1);
+            }
+        }
+        return link ;
+    }
     public ObservableList<Event> eventInformation(){
         ObservableList<Event>eventList= FXCollections.observableArrayList();
         String query = "select * from events ";
@@ -528,6 +543,7 @@ public class DatabaseConnection {
                 event.setEventOrganizer(resultSet.getString(6));
                 event.setCountry(resultSet.getString(7));
                 event.setCity(resultSet.getString(8));
+                event.setLink(resultSet.getString(9));
                 eventList.add(event);
 
             }

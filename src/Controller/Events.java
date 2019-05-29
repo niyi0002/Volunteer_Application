@@ -46,6 +46,10 @@ public class Events implements Initializable {
 
     @FXML
     private TableColumn<Event, String> city;
+
+    @FXML
+    private TableColumn<Event, String> link;
+
     @FXML
     private TextField enterID;
     @FXML
@@ -61,6 +65,7 @@ public class Events implements Initializable {
 
     @FXML
     private Button goBack;
+
 
     private DatabaseConnection db = new DatabaseConnection();
     private ChangeScene cs = new ChangeScene();
@@ -83,6 +88,8 @@ public class Events implements Initializable {
         this.organizer.setCellValueFactory(new PropertyValueFactory("eventOrganizer"));
         this.country.setCellValueFactory(new PropertyValueFactory("country"));
         this.city.setCellValueFactory(new PropertyValueFactory("city"));
+        this.link.setCellValueFactory(new PropertyValueFactory("link"));
+
 
 
         this.table.setItems(eventObservableList);
@@ -150,6 +157,7 @@ public class Events implements Initializable {
             event1.setEventName(db.getEventName(eventid));
             event1.setCountry(db.getEventCountry(eventid));
             event1.setCity(db.getEventCity(eventid));
+            event1.setLink(db.getEventLink(eventid));
             db.registerToAnEvent(personID, eventid, event1, volunteer);
         }else {alertBox();}
 

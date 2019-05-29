@@ -17,10 +17,12 @@ public class Event {
     private StringProperty eventOrganizer = new SimpleStringProperty(this, "eventOrganizer");
     private StringProperty country = new SimpleStringProperty(this, "country");
     private StringProperty city = new SimpleStringProperty(this, "city");
+    private StringProperty link = new SimpleStringProperty(this, "link");
+
 
 
     public Event(IntegerProperty eventID, StringProperty eventName, StringProperty eventDate, StringProperty eventTime
-            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city) {
+            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city,StringProperty link) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -29,7 +31,16 @@ public class Event {
         this.eventOrganizer = eventOrganizer;
         this.country = country;
         this.city = city;
+        this.link = link;
 
+    }
+
+    public String getLink() {
+        return link.get();
+    }
+
+    public StringProperty linkProperty() {
+        return link;
     }
 
     public Event() {
@@ -63,9 +74,15 @@ public class Event {
         this.country.set(country);
     }
 
-    public void setCity(String city) {
-        this.city.set(city);
+    public void setCity(String link) {
+        this.city.set(link);
     }
+
+    public void setLink(String link) {
+        this.link.set(link);
+    }
+
+
 
     public int getEventID() {
         return eventID.get();
@@ -99,6 +116,8 @@ public class Event {
         return city.get();
     }
 
+    public String getEvent(){ return  link.get(); }
+
     public IntegerProperty eventIDProperty() {
         return eventID;
     }
@@ -130,4 +149,6 @@ public class Event {
     public StringProperty cityProperty() {
         return city;
     }
+
+
 }
