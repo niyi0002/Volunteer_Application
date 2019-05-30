@@ -36,7 +36,7 @@
                 <TableColumn fx:id="organizer" prefWidth="147.0" text="Organizer" />
                 <TableColumn fx:id="country" prefWidth="153.0" text="Country" />
                 <TableColumn fx:id="city" prefWidth="147.0" text="City" />
-            <TableColumn fx:id="link" prefWidth="173.0" text="Link" />
+                <TableColumn fx:id="eventsMoreInfoLink" prefWidth="173.0" text="Links" />
             </columns>
         </TableView>
         <TextField fx:id="search" layoutX="43.0" layoutY="39.0" opacity="0.5" prefHeight="25.0" prefWidth="305.0" promptText="search events">

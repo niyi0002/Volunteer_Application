@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Volunteer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import jdk.jshell.execution.Util;
+import sample.ChangeScene;
+import sample.DatabaseConnection;
+
+import java.io.IOException;
 
 public class AboutUs {
 
@@ -19,6 +25,8 @@ public class AboutUs {
 
     @FXML
     private Button mainButton;
+
+
     Stage dialogStage = new Stage();
     Scene scene;
 

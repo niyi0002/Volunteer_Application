@@ -1,5 +1,6 @@
 package Controller;
 
+import javafx.util.Callback;
 import sample.DatabaseConnection;
 import Model.Event;
 import Model.Volunteer;
@@ -48,7 +49,7 @@ public class Events implements Initializable {
     private TableColumn<Event, String> city;
 
     @FXML
-    private TableColumn<Event, String> link;
+    private TableColumn<Event, Hyperlink> eventsMoreInfoLink;
 
     @FXML
     private TextField enterID;
@@ -88,8 +89,8 @@ public class Events implements Initializable {
         this.organizer.setCellValueFactory(new PropertyValueFactory("eventOrganizer"));
         this.country.setCellValueFactory(new PropertyValueFactory("country"));
         this.city.setCellValueFactory(new PropertyValueFactory("city"));
-        this.link.setCellValueFactory(new PropertyValueFactory("link"));
-
+        this.eventsMoreInfoLink.setCellValueFactory(new PropertyValueFactory<>("link"));
+        this.eventsMoreInfoLink.setCellFactory(new HyperlinkCell());
 
 
         this.table.setItems(eventObservableList);
@@ -176,6 +177,20 @@ public class Events implements Initializable {
         errorAlert.showAndWait();
         System.out.println("Failed");
 
+    }
+    /** This is to handle the update of the cell with hyperlink */
+    private class HyperlinkCell implements Callback<TableColumn<Event, Hyperlink>, TableCell<Event, Hyperlink>> {
+        @Override
+        public TableCell<Event, Hyperlink> call(TableColumn<Event, Hyperlink> param) {
+            TableCell<Event, Hyperlink> cell = new TableCell<Event, Hyperlink>() {
+
+                @Override
+                protected void updateItem(Hyperlink item, boolean empty) {
+                    setGraphic(item);
+                }
+            };
+            return cell;
+        }
     }
 
 

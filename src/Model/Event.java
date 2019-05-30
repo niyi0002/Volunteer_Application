@@ -4,6 +4,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Hyperlink;
+import sample.Main;
 
 import java.sql.Date;
 
@@ -17,12 +21,13 @@ public class Event {
     private StringProperty eventOrganizer = new SimpleStringProperty(this, "eventOrganizer");
     private StringProperty country = new SimpleStringProperty(this, "country");
     private StringProperty city = new SimpleStringProperty(this, "city");
-    private StringProperty link = new SimpleStringProperty(this, "link");
 
+    // Birtu ..
+    private Hyperlink link = new Hyperlink();
 
 
     public Event(IntegerProperty eventID, StringProperty eventName, StringProperty eventDate, StringProperty eventTime
-            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city,StringProperty link) {
+            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -31,16 +36,7 @@ public class Event {
         this.eventOrganizer = eventOrganizer;
         this.country = country;
         this.city = city;
-        this.link = link;
 
-    }
-
-    public String getLink() {
-        return link.get();
-    }
-
-    public StringProperty linkProperty() {
-        return link;
     }
 
     public Event() {
@@ -74,15 +70,9 @@ public class Event {
         this.country.set(country);
     }
 
-    public void setCity(String link) {
-        this.city.set(link);
+    public void setCity(String city) {
+        this.city.set(city);
     }
-
-    public void setLink(String link) {
-        this.link.set(link);
-    }
-
-
 
     public int getEventID() {
         return eventID.get();
@@ -115,8 +105,6 @@ public class Event {
     public String getCity() {
         return city.get();
     }
-
-    public String getEvent(){ return  link.get(); }
 
     public IntegerProperty eventIDProperty() {
         return eventID;
@@ -151,4 +139,19 @@ public class Event {
     }
 
 
+    public Hyperlink getLink() {
+        return link;
+    }
+
+    public void setLink(String url) {
+        this.link = new Hyperlink(url);
+
+        // This handles on click action and will open the given website url
+        this.link.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Main.instance.getHostServices().showDocument(url);
+            }
+        });
+    }
 }

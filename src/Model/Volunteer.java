@@ -4,6 +4,8 @@ package Model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.awt.*;
+import java.net.URI;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -55,6 +57,8 @@ public class Volunteer extends User {
     public void setBalance(String balance) {
         this.balance.set(balance);
     }
+
+
 
     @Override
     public String toString() {
