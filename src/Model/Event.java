@@ -22,7 +22,6 @@ public class Event {
     private StringProperty country = new SimpleStringProperty(this, "country");
     private StringProperty city = new SimpleStringProperty(this, "city");
 
-    // Birtu ..
     private Hyperlink link = new Hyperlink();
 
 
