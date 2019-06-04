@@ -32,7 +32,7 @@
                 <TableColumn fx:id="eventName" prefWidth="171.0" text="EventName" />
                 <TableColumn fx:id="date" prefWidth="105.0" text="Date" />
                 <TableColumn fx:id="time" prefWidth="81.0" text="Time" />
-                <TableColumn fx:id="info" prefWidth="278.0" text="Information" />
+                <TableColumn fx:id="info" prefWidth="278.0" text="Discription" />
                 <TableColumn fx:id="organizer" prefWidth="147.0" text="Organizer" />
                 <TableColumn fx:id="country" prefWidth="153.0" text="Country" />
                 <TableColumn fx:id="city" prefWidth="147.0" text="City" />
