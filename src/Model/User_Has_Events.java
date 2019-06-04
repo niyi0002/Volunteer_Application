@@ -23,7 +23,9 @@ public class User_Has_Events {
 
 
 
-    public User_Has_Events(IntegerProperty ID,IntegerProperty eventID ,StringProperty idinformation ,StringProperty history, StringProperty country, StringProperty city, StringProperty eventTime, StringProperty eventName){
+    public User_Has_Events(IntegerProperty ID,IntegerProperty eventID ,StringProperty idinformation ,
+                           StringProperty history, StringProperty country, StringProperty city, StringProperty eventTime,
+                           StringProperty eventName){
         this.eventID = eventID;
         this.idinformation = idinformation;
         this.history = history;
