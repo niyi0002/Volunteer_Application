@@ -21,12 +21,13 @@ public class Event {
     private StringProperty eventOrganizer = new SimpleStringProperty(this, "eventOrganizer");
     private StringProperty country = new SimpleStringProperty(this, "country");
     private StringProperty city = new SimpleStringProperty(this, "city");
+    //private  link = new SimpleStringProperty(this, "link");
 
     private Hyperlink link = new Hyperlink();
 
 
     public Event(IntegerProperty eventID, StringProperty eventName, StringProperty eventDate, StringProperty eventTime
-            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city) {
+            , StringProperty eventInfo, StringProperty eventOrganizer, StringProperty country, StringProperty city ) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventDate = eventDate;
@@ -139,6 +140,7 @@ public class Event {
 
 
     public Hyperlink getLink() {
+
         return link;
     }
 

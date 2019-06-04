@@ -19,7 +19,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ViewHistory implements Initializable {
+public class  ViewHistory implements Initializable {
 
     @FXML
     private TableView<User_Has_Events> history;

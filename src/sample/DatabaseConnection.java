@@ -18,7 +18,8 @@ public class DatabaseConnection {
     public static Connection dbConnect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/volunteer_application", "root", "12345678Bam!");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/volunteer_application",
+                    "root", "12345678Bam!");
             return con;
         } catch (Exception ex) {
             System.out.println("the connection fails " + ex);
@@ -87,7 +88,8 @@ public class DatabaseConnection {
     }
 
     public void insert(Volunteer volunteer) {
-        String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email,address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "" + "INSERT INTO volunteers(securityNbr,userName,password,firstName,lastName,email," +
+                "address,phoneNbr,birthday,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
@@ -429,7 +431,7 @@ public class DatabaseConnection {
     }
     public void registerToAnEvent(String userid , int eventid , Event event , Volunteer volunteer){
 
-        String sql = ""+"INSERT INTO volunteer_has_events(eventID,securityNbr,history,eventTime,eventName,country,city) VALUES(?,?,?,?,?,?,?)";
+        String sql = ""+"INSERT INTO volunteer_has_events(eventID,securityNbr,history,eventTime,eventName,country,city,link) VALUES(?,?,?,?,?,?,?,?)";
 
 
         try (Connection conn = this.dbConnect();
@@ -442,6 +444,8 @@ public class DatabaseConnection {
             pstmt.setString(5,event.getEventName());
             pstmt.setString(6,event.getCountry());
             pstmt.setString(7,event.getCity());
+
+
 
             pstmt.executeUpdate();
             System.out.println("Volunteer has registered to an event!");
@@ -558,7 +562,8 @@ public class DatabaseConnection {
         String roles = "volunteer";
         ObservableList<Volunteer>eventList= FXCollections.observableArrayList();
 
-        String query = "select firstName,lastName,securityNbr,userName,role,email,birthday,address,phoneNbr from volunteers where role = '"+roles+"'";
+        String query = "select firstName,lastName,securityNbr,userName,role,email,birthday,address," +
+                "phoneNbr from volunteers where role = '"+roles+"'";
         try (Connection connection = this.dbConnect();
              Statement statement = connection.createStatement()){
             ResultSet resultSet = statement.executeQuery(query);
