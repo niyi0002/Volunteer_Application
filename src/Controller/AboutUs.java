@@ -22,7 +22,6 @@ public class AboutUs {
     private Label labelAboutUs;
     @FXML
     private Text textAboutUs;
-
     @FXML
     private Button mainButton;
 
